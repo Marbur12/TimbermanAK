@@ -68,6 +68,16 @@ static void MX_ADC1_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	char rightMan[] = {
+	  0x00,
+	  0x00,
+	  0x1F,
+	  0x1D,
+	  0x04,
+	  0x04,
+	  0x1F,
+	  0x1F
+	};
 
   /* USER CODE END 1 */
 
@@ -77,7 +87,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -91,7 +101,12 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-  lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+  lcd_cmd(0x40);
+  for (int i = 0; i < 8; i++) lcd_char_cp(rightMan[i]);
+  lcd_cmd(0x80);
+
+  lcd_gotoxy(1, 1);
+  lcd_char_cp(0);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -99,8 +114,16 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  lcd_print(1, 1, "Hello");
+
+
+	  /*lcd_gotoxy(1, 1);
+	  lcd_out_cp(0);
+	  HAL_Delay(100);
+	  lcd_clear();*/
+	  /*lcd_print(1, 1, "Hello");
 	  lcd_print(2, 1, "World");
+	  HAL_Delay(100);
+	  lcd_clear();*/
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
