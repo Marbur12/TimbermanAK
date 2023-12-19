@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "lcd.h"
+#include "LCD_Keypad.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -89,7 +91,7 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
-
+  lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,7 +99,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  lcd_print(1, 1, "Hello");
+	  lcd_print(2, 1, "World");
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
