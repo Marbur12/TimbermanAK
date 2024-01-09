@@ -1,17 +1,27 @@
-15:29:39 **** Incremental Build of configuration Debug for project Timberman ****
+15:29:41 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:102:14: warning: unused variable 'leftMan' [-Wunused-variable]
+  102 |         char leftMan[] = {
+      |              ^~~~~~~
+../Core/Src/main.c:92:14: warning: unused variable 'leftManHit' [-Wunused-variable]
+   92 |         char leftManHit[] = {
+      |              ^~~~~~~~~~
+../Core/Src/main.c:81:14: warning: unused variable 'rightMan' [-Wunused-variable]
+   81 |         char rightMan[] = {
+      |              ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  14304	     20	   1668	  15992	   3e78	Timberman.elf
+  14464	     20	   1668	  16152	   3f18	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
 
-15:29:41 Build Finished. 0 errors, 0 warnings. (took 1s.641ms)
+15:29:42 Build Finished. 0 errors, 3 warnings. (took 1s.482ms)
 

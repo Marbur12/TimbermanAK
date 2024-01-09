@@ -68,7 +68,7 @@ static void MX_ADC1_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	char rightMan[] = {
+	char rightManHit[] = {
 	  0x00,
 	  0x00,
 	  0x1F,
@@ -78,6 +78,39 @@ int main(void)
 	  0x1F,
 	  0x1F
 	};
+	char rightMan[] = {
+		  0x00,
+		  0x00,
+		  0x1F,
+		  0x1D,
+		  0x04,
+		  0x00,
+		  0x1F,
+		  0x1F
+	};
+
+	char leftManHit[] = {
+	  0x1F,
+	  0x1F,
+	  0x04,
+	  0x04,
+	  0x1D,
+	  0x1F,
+	  0x00,
+	  0x00
+	};
+	char leftMan[] = {
+	  0x1F,
+	  0x1F,
+	  0x00,
+	  0x04,
+	  0x1D,
+	  0x1F,
+	  0x00,
+	  0x00
+	};
+
+
 
   /* USER CODE END 1 */
 
@@ -101,12 +134,35 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+  lcd_clear();
   lcd_cmd(0x40);
+  for (int i = 0; i < 8; i++) lcd_char_cp(rightManHit[i]);
+
+  lcd_cmd(0x48);
   for (int i = 0; i < 8; i++) lcd_char_cp(rightMan[i]);
+
+  lcd_cmd(0x56);
+  for (int i = 0; i < 8; i++) lcd_char_cp(leftManHit[i]);
+
+  lcd_cmd(0x64);
+  for (int i = 0; i < 8; i++) lcd_char_cp(leftMan[i]);
+
   lcd_cmd(0x80);
 
   lcd_gotoxy(1, 1);
   lcd_char_cp(0);
+
+  lcd_gotoxy(1, 2);
+  lcd_char_cp(1);
+
+  lcd_gotoxy(2, 1);
+  lcd_char_cp(2);
+
+  lcd_gotoxy(2, 2);
+  lcd_char_cp(3);
+
+
+  //lcd_print(1, 1, "HelloTest123");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -115,15 +171,6 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-
-	  /*lcd_gotoxy(1, 1);
-	  lcd_out_cp(0);
-	  HAL_Delay(100);
-	  lcd_clear();*/
-	  /*lcd_print(1, 1, "Hello");
-	  lcd_print(2, 1, "World");
-	  HAL_Delay(100);
-	  lcd_clear();*/
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
