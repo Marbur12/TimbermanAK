@@ -154,12 +154,12 @@ int main(void) {
 
 	lcd_gotoxy(2, 3);
 	lcd_char_cp(5);
-/*
-	lcd_gotoxy(7, 1);
+
+	lcd_gotoxy(1, 4);
 	lcd_char_cp(6);
 
-	lcd_gotoxy(7, 2);
-	lcd_char_cp(7);*/
+	lcd_gotoxy(2, 4);
+	lcd_char_cp(7);
 
 	//lcd_print(1, 1, "HelloTest123");
 	/* USER CODE END 2 */
