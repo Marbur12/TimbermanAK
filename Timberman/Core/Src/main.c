@@ -67,6 +67,8 @@ static void MX_ADC1_Init(void);
  */
 int main(void) {
 	/* USER CODE BEGIN 1 */
+
+	// ----------------------------------------------------- Custom characters variables ----------------------------------------------------
 	char rightManHit[] = { 0x00, 0x00, 0x1F, 0x1D, 0x04, 0x04, 0x1F, 0x1F };
 	char leftManHit[] = { 0x1F, 0x1F, 0x04, 0x04, 0x1D, 0x1F, 0x00, 0x00 };
 
@@ -78,6 +80,8 @@ int main(void) {
 
 	char logRight[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x1F };
 	char logLeft[] = { 0x1F, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+	// ---------------------------------------------------------------------------------------------------------------------------------------
+
 
 	/* USER CODE END 1 */
 
@@ -87,7 +91,11 @@ int main(void) {
 	HAL_Init();
 
 	/* USER CODE BEGIN Init */
+
+	// ---------------------------------------------------- Initialization of LCD screen -----------------------------------------------------
 	lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+	// ---------------------------------------------------------------------------------------------------------------------------------------
+
 	/* USER CODE END Init */
 
 	/* Configure the system clock */
@@ -103,39 +111,27 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
 	lcd_clear();
 	// lcd_print(1,1,"Hello World 2");
+
+	// ------------------------------------------------ Assigning custom characters to memory ------------------------------------------------
 	lcd_cmd(0x40);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(rightManHit[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(rightManHit[i]);
 	lcd_cmd(0x40 + 8);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(leftManHit[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(leftManHit[i]);
 	lcd_cmd(0x40 + 16);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(rightMan[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(rightMan[i]);
 	lcd_cmd(0x40 + 24);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(leftMan[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(leftMan[i]);
 	lcd_cmd(0x40 + 32);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(branchRight[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(branchRight[i]);
 	lcd_cmd(0x40 + 40);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(branchLeft[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(branchLeft[i]);
 	lcd_cmd(0x40 + 48);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(logRight[i]);
-
+	for (int i = 0; i < 8; i++)	lcd_char_cp(logRight[i]);
 	lcd_cmd(0x40 + 56);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(logLeft[i]);
+	for (int i = 0; i < 8; i++)	lcd_char_cp(logLeft[i]);
 
 	lcd_cmd(0x80);
+	// ---------------------------------------------------------------------------------------------------------------------------------------
 
 	lcd_gotoxy(1, 1);
 	lcd_char_cp(0);
