@@ -149,12 +149,12 @@ int main(void) {
 	lcd_gotoxy(2, 2);
 	lcd_char_cp(3);
 
-	/*lcd_gotoxy(5, 1);
+	lcd_gotoxy(1, 3);
 	lcd_char_cp(4);
 
-	lcd_gotoxy(5, 2);
+	lcd_gotoxy(2, 3);
 	lcd_char_cp(5);
-
+/*
 	lcd_gotoxy(7, 1);
 	lcd_char_cp(6);
 
