@@ -70,9 +70,6 @@ char scoreText[16] = "";
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
 	lcd_clear();
-	lcd_print(1, 4, "Timberman!");
-	lcd_print(2, 2, "Select = START");
-
 	sprintf(scoreText, "Score = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
@@ -84,7 +81,7 @@ void menu() {
 		lcd_clear();
 
 		lcd_print(1, 4, "Timberman!");
-		lcd_print(2, 2, "Select = START");
+		lcd_print(2, 2, "Start = LEFT");
 
 		HAL_Delay(1500);
 		lcd_clear();
@@ -106,13 +103,13 @@ void gameOver() {
 
 	while (1) {
 		lcd_print(1, startCol, scoreText);
-		lcd_print(2, 2, "Select = START");
+		lcd_print(2, 2, "Menu = LEFT");
 
 		HAL_Delay(1500);
 		lcd_clear();
 
 		lcd_print(1, 3, "Game Over :(");
-		lcd_print(2, 2, "Select = START");
+		lcd_print(2, 2, "Menu = LEFT");
 
 		HAL_Delay(1500);
 		lcd_clear();
@@ -235,10 +232,11 @@ int main(void) {
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
+
 	//menu();
 	//gameOver();
 
-	char zmienna[16];
+
 	while (1) {
 		/* USER CODE END WHILE */
 		HAL_ADC_Start(&hadc1);
@@ -247,10 +245,6 @@ int main(void) {
 			lcd_clear();
 			value = HAL_ADC_GetValue(&hadc1);
 
-			/*sprintf(zmienna, "%u", value);
-			lcd_print(1, 1, zmienna);
-			HAL_Delay(200);
-			lcd_clear();*/
 			if (value > 4000)
 				lcd_print(1, 1, "NOTHING");
 			if (value > 2750 && value < 3000)
