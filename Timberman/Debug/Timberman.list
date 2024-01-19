@@ -7,23 +7,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
   1 .text         00003e0c  08000188  08000188  00010188  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       000000e0  08003f94  08003f94  00013f94  2**2
+  2 .rodata       000000e4  08003f94  08003f94  00013f94  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08004074  08004074  0002000c  2**0
+  3 .ARM.extab    00000000  08004078  08004078  0002000c  2**0
                   CONTENTS
-  4 .ARM          00000000  08004074  08004074  0002000c  2**0
+  4 .ARM          00000000  08004078  08004078  0002000c  2**0
                   CONTENTS
-  5 .preinit_array 00000000  08004074  08004074  0002000c  2**0
+  5 .preinit_array 00000000  08004078  08004078  0002000c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08004074  08004074  00014074  2**2
+  6 .init_array   00000004  08004078  08004078  00014078  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08004078  08004078  00014078  2**2
+  7 .fini_array   00000004  0800407c  0800407c  0001407c  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000000c  20000000  0800407c  00020000  2**2
+  8 .data         0000000c  20000000  08004080  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          00000090  2000000c  08004088  0002000c  2**2
+  9 .bss          00000090  2000000c  0800408c  0002000c  2**2
                   ALLOC
- 10 ._user_heap_stack 00000604  2000009c  08004088  0002009c  2**0
+ 10 ._user_heap_stack 00000604  2000009c  0800408c  0002009c  2**0
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
@@ -1069,7 +1069,7 @@ int main(void) {
  800089a:	881b      	ldrh	r3, [r3, #0]
  800089c:	f5b3 6f7a 	cmp.w	r3, #4000	; 0xfa0
  80008a0:	d904      	bls.n	80008ac <main+0x220>
-				lcd_print(1, 1, "NIC");
+				lcd_print(1, 1, "NOTHING");
  80008a2:	4a29      	ldr	r2, [pc, #164]	; (8000948 <main+0x2bc>)
  80008a4:	2101      	movs	r1, #1
  80008a6:	2001      	movs	r0, #1
@@ -1130,21 +1130,21 @@ int main(void) {
  800091a:	f7ff fe94 	bl	8000646 <lcd_print>
 		HAL_ADC_Start(&hadc1);
  800091e:	e7a5      	b.n	800086c <main+0x1e0>
- 8000920:	08003ff4 	.word	0x08003ff4
- 8000924:	08003ffc 	.word	0x08003ffc
- 8000928:	08004004 	.word	0x08004004
- 800092c:	0800400c 	.word	0x0800400c
- 8000930:	08004014 	.word	0x08004014
- 8000934:	0800401c 	.word	0x0800401c
- 8000938:	08004024 	.word	0x08004024
- 800093c:	0800402c 	.word	0x0800402c
+ 8000920:	08003ff8 	.word	0x08003ff8
+ 8000924:	08004000 	.word	0x08004000
+ 8000928:	08004008 	.word	0x08004008
+ 800092c:	08004010 	.word	0x08004010
+ 8000930:	08004018 	.word	0x08004018
+ 8000934:	08004020 	.word	0x08004020
+ 8000938:	08004028 	.word	0x08004028
+ 800093c:	08004030 	.word	0x08004030
  8000940:	20000030 	.word	0x20000030
  8000944:	20000094 	.word	0x20000094
  8000948:	08003fd4 	.word	0x08003fd4
- 800094c:	08003fd8 	.word	0x08003fd8
- 8000950:	08003fe0 	.word	0x08003fe0
- 8000954:	08003fe4 	.word	0x08003fe4
- 8000958:	08003fec 	.word	0x08003fec
+ 800094c:	08003fdc 	.word	0x08003fdc
+ 8000950:	08003fe4 	.word	0x08003fe4
+ 8000954:	08003fe8 	.word	0x08003fe8
+ 8000958:	08003ff0 	.word	0x08003ff0
 
 0800095c <SystemClock_Config>:
 
@@ -2089,7 +2089,7 @@ LoopForever:
   ldr r1, =_edata
  8000ddc:	2000000c 	.word	0x2000000c
   ldr r2, =_sidata
- 8000de0:	0800407c 	.word	0x0800407c
+ 8000de0:	08004080 	.word	0x08004080
   ldr r2, =_sbss
  8000de4:	2000000c 	.word	0x2000000c
   ldr r4, =_ebss
@@ -7316,7 +7316,7 @@ HAL_StatusTypeDef HAL_RCC_OscConfig(RCC_OscInitTypeDef  *RCC_OscInitStruct)
  8002c88:	e014      	b.n	8002cb4 <HAL_RCC_OscConfig+0x298>
  8002c8a:	bf00      	nop
  8002c8c:	40021000 	.word	0x40021000
- 8002c90:	08004034 	.word	0x08004034
+ 8002c90:	08004038 	.word	0x08004038
  8002c94:	20000000 	.word	0x20000000
  8002c98:	20000004 	.word	0x20000004
  8002c9c:	4ba0      	ldr	r3, [pc, #640]	; (8002f20 <HAL_RCC_OscConfig+0x504>)
@@ -8621,7 +8621,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  80033be:	bd80      	pop	{r7, pc}
  80033c0:	40022000 	.word	0x40022000
  80033c4:	40021000 	.word	0x40021000
- 80033c8:	08004034 	.word	0x08004034
+ 80033c8:	08004038 	.word	0x08004038
  80033cc:	20000000 	.word	0x20000000
  80033d0:	20000004 	.word	0x20000004
 
@@ -8826,7 +8826,7 @@ uint32_t HAL_RCC_GetSysClockFreq(void)
  80034d8:	4770      	bx	lr
  80034da:	bf00      	nop
  80034dc:	40021000 	.word	0x40021000
- 80034e0:	08004044 	.word	0x08004044
+ 80034e0:	08004048 	.word	0x08004048
  80034e4:	00f42400 	.word	0x00f42400
  80034e8:	007a1200 	.word	0x007a1200
 
@@ -10810,10 +10810,10 @@ static HAL_StatusTypeDef RCCEx_PLLSAI2_Config(RCC_PLLSAI2InitTypeDef *PllSai2, u
  8003f66:	4798      	blx	r3
  8003f68:	3601      	adds	r6, #1
  8003f6a:	e7f2      	b.n	8003f52 <__libc_init_array+0x1e>
- 8003f6c:	08004074 	.word	0x08004074
- 8003f70:	08004074 	.word	0x08004074
- 8003f74:	08004074 	.word	0x08004074
- 8003f78:	08004078 	.word	0x08004078
+ 8003f6c:	08004078 	.word	0x08004078
+ 8003f70:	08004078 	.word	0x08004078
+ 8003f74:	08004078 	.word	0x08004078
+ 8003f78:	0800407c 	.word	0x0800407c
 
 08003f7c <_init>:
  8003f7c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}

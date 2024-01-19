@@ -251,7 +251,7 @@ int main(void) {
 			HAL_Delay(200);
 			lcd_clear();*/
 			if (value > 4000)
-				lcd_print(1, 1, "NIC");
+				lcd_print(1, 1, "NOTHING");
 			if (value > 2750 && value < 3000)
 				lcd_print(1, 1, "LEFT");
 			if (value > 700 && value < 820)
