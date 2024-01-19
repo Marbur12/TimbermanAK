@@ -23,6 +23,9 @@
 /* USER CODE BEGIN Includes */
 #include "lcd.h"
 #include "LCD_Keypad.h"
+#include <ctype.h>
+#include <stdio.h>
+#include <stdint.h>
 #include <string.h>
 /* USER CODE END Includes */
 
@@ -45,7 +48,7 @@
 ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
-
+uint16_t value;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,19 +76,19 @@ void menu() {
 	sprintf(scoreText, "Score = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
-	while(1) {
-			lcd_print(1, 4, "Timberman!");
-			lcd_print(2, startCol, scoreText);
+	while (1) {
+		lcd_print(1, 4, "Timberman!");
+		lcd_print(2, startCol, scoreText);
 
-			HAL_Delay(1500);
-			lcd_clear();
+		HAL_Delay(1500);
+		lcd_clear();
 
-			lcd_print(1, 4, "Timberman!");
-			lcd_print(2, 2, "Select = START");
+		lcd_print(1, 4, "Timberman!");
+		lcd_print(2, 2, "Select = START");
 
-			HAL_Delay(1500);
-			lcd_clear();
-		}
+		HAL_Delay(1500);
+		lcd_clear();
+	}
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Game ----------------------------------------------------------
@@ -101,7 +104,7 @@ void gameOver() {
 	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
-	while(1) {
+	while (1) {
 		lcd_print(1, startCol, scoreText);
 		lcd_print(2, 2, "Select = START");
 
@@ -141,7 +144,6 @@ int main(void) {
 	char logLeft[] = { 0x1F, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
-
 	/* USER CODE END 1 */
 
 	/* MCU Configuration--------------------------------------------------------*/
@@ -153,8 +155,10 @@ int main(void) {
 
 	// ---------------------------------------------------- Initialization of LCD screen -----------------------------------------------------
 	lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+	//LCD_init();
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
+	KPAD_init(&hadc1);
 	/* USER CODE END Init */
 
 	/* Configure the system clock */
@@ -173,61 +177,91 @@ int main(void) {
 
 	// ------------------------------------------------ Assigning custom characters to memory ------------------------------------------------
 	lcd_cmd(0x40);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(rightManHit[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(rightManHit[i]);
 	lcd_cmd(0x40 + 8);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(leftManHit[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(leftManHit[i]);
 	lcd_cmd(0x40 + 16);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(rightMan[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(rightMan[i]);
 	lcd_cmd(0x40 + 24);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(leftMan[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(leftMan[i]);
 	lcd_cmd(0x40 + 32);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(branchRight[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(branchRight[i]);
 	lcd_cmd(0x40 + 40);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(branchLeft[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(branchLeft[i]);
 	lcd_cmd(0x40 + 48);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(logRight[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(logRight[i]);
 	lcd_cmd(0x40 + 56);
-	for (int i = 0; i < 8; i++)	lcd_char_cp(logLeft[i]);
+	for (int i = 0; i < 8; i++)
+		lcd_char_cp(logLeft[i]);
 
 	lcd_cmd(0x80);
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
 	/*lcd_gotoxy(1, 1);
-	lcd_char_cp(0);
+	 lcd_char_cp(0);
 
-	lcd_gotoxy(2, 1);
-	lcd_char_cp(1);
+	 lcd_gotoxy(2, 1);
+	 lcd_char_cp(1);
 
-	lcd_gotoxy(1, 2);
-	lcd_char_cp(2);
+	 lcd_gotoxy(1, 2);
+	 lcd_char_cp(2);
 
-	lcd_gotoxy(2, 2);
-	lcd_char_cp(3);
+	 lcd_gotoxy(2, 2);
+	 lcd_char_cp(3);
 
-	lcd_gotoxy(1, 3);
-	lcd_char_cp(4);
+	 lcd_gotoxy(1, 3);
+	 lcd_char_cp(4);
 
-	lcd_gotoxy(2, 3);
-	lcd_char_cp(5);
+	 lcd_gotoxy(2, 3);
+	 lcd_char_cp(5);
 
 
 
-	lcd_gotoxy(1, 4);
-	lcd_char_cp(6);
+	 lcd_gotoxy(1, 4);
+	 lcd_char_cp(6);
 
-	lcd_gotoxy(2, 4);
-	lcd_char_cp(7);*/
+	 lcd_gotoxy(2, 4);
+	 lcd_char_cp(7);*/
 
 	//lcd_print(1, 1, "HelloTest123");
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
-	menu();
+	//menu();
 	//gameOver();
+	char zmienna[16];
 	while (1) {
 		/* USER CODE END WHILE */
+		HAL_ADC_Start(&hadc1);
+		HAL_Delay(200);
+		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
+			lcd_clear();
+			value = HAL_ADC_GetValue(&hadc1);
 
+			sprintf(zmienna, "%u", value);
+			lcd_print(1, 1, zmienna);
+			HAL_Delay(200);
+			lcd_clear();
+
+			/*if (value > 2700 && value < 2900)
+				LCD_print("SELECT");
+			if (value > 1900 && value < 2300)
+				LCD_print("LEFT");
+			if (value > 1300 && value < 1600)
+				LCD_print("DOWN");
+			if (value > 500 && value < 800)
+				LCD_print("UP");
+			if (value < 500 && value >= 0)
+				LCD_print("RIGHT");*/
+		}
 		/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */
