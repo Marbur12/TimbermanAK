@@ -238,7 +238,7 @@ int main(void) {
 	//menu();
 	//gameOver();
 
-
+	char zmienna[16];
 	while (1) {
 		/* USER CODE END WHILE */
 		HAL_ADC_Start(&hadc1);
