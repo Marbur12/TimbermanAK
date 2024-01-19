@@ -71,7 +71,7 @@ char scoreText[16] = "";
 void menu() {
 
 	lcd_clear();
-	sprintf(scoreText, "Score = %d", highScore);
+	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
 	HAL_ADC_Start(&hadc1);
@@ -80,7 +80,7 @@ void menu() {
 
 
 	do {
-		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
+		//if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
 
 						/*if (value > 4000)
@@ -100,15 +100,15 @@ void menu() {
 				display = 1;
 			}
 			else if (display == 1) {
-				lcd_print(2, 2, "Start == LEFT");
+				lcd_print(2, 2, "Start = PRESS");
 				display = 0;
 			}
 
 			HAL_Delay(1500);
 			lcd_clear();
-		}
+		//}
 
-	} while (!(value > 2750 && value < 3000));
+	} while (value > 4000);
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Game ----------------------------------------------------------
