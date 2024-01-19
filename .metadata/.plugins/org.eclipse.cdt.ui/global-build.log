@@ -149,3 +149,25 @@ Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
+10:58:53 **** Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:69:19: warning: passing argument 1 of 'lcd_print' makes integer from pointer without a cast [-Wint-conversion]
+   69 |         lcd_print("Select = START");
+      |                   ^~~~~~~~~~~~~~~~
+      |                   |
+      |                   char *
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/lcd.h:33:30: note: expected 'unsigned char' but argument is of type 'char *'
+   33 | void lcd_print(unsigned char row, unsigned char column, char *out_char);
+      |                ~~~~~~~~~~~~~~^~~
+../Core/Src/main.c:69:9: error: too few arguments to function 'lcd_print'
+   69 |         lcd_print("Select = START");
+      |         ^~~~~~~~~
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/lcd.h:33:6: note: declared here
+   33 | void lcd_print(unsigned char row, unsigned char column, char *out_char);
+      |      ^~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
