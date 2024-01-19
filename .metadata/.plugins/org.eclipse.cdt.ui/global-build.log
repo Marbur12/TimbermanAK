@@ -1,4 +1,11 @@
-20:04:52 **** Incremental Build of configuration Debug for project Timberman ****
+20:59:22 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16360	     20	   1716	  18096	   46b0	Timberman.elf
+Finished building: default.size.stdout
+ 
+21:00:47 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,19 +14,40 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
+  16360	     20	   1716	  18096	   46b0	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:04:57 **** Incremental Build of configuration Debug for project Timberman ****
+21:01:03 **** Incremental Build of configuration Debug for project MiGrochowski_RTC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_RTC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16380	     20	   1708	  18108	   46bc	MiGrochowski_RTC.elf
+Finished building: default.size.stdout
+ 
+21:01:25 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-size   Timberman.elf 
    text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
+  16360	     20	   1716	  18096	   46b0	Timberman.elf
 Finished building: default.size.stdout
  
-20:06:08 **** Incremental Build of configuration Debug for project Timberman ****
+21:01:54 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16360	     20	   1716	  18096	   46b0	Timberman.elf
+Finished building: default.size.stdout
+ 
+21:02:07 **** Incremental Build of configuration Debug for project MiGrochowski_RTC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_RTC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16380	     20	   1708	  18108	   46bc	MiGrochowski_RTC.elf
+Finished building: default.size.stdout
+ 
+21:04:45 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -28,12 +56,12 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
+  17068	     20	   1716	  18804	   4974	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:10:48 **** Incremental Build of configuration Debug for project Timberman ****
+21:06:07 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -42,12 +70,23 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
+  21352	    104	   2064	  23520	   5be0	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:12:49 **** Incremental Build of configuration Debug for project Timberman ****
+21:07:04 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:81:24: error: 'True' undeclared (first use in this function); did you mean 'true'?
+   81 |         bool display = True;
+      |                        ^~~~
+      |                        true
+../Core/Src/main.c:81:24: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+21:07:18 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -56,12 +95,25 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
+  21356	    104	   2064	  23524	   5be4	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:14:09 **** Incremental Build of configuration Debug for project Timberman ****
+21:08:04 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:102:49: error: 'time' undeclared (first use in this function)
+  102 |                         HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+      |                                                 ^~~~
+../Core/Src/main.c:102:49: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:105:33: error: 'newTime' undeclared (first use in this function)
+  105 |                                 newTime = time;
+      |                                 ^~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+21:08:10 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -70,40 +122,12 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
+  21696	    104	   2064	  23864	   5d38	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:15:32 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-size   Timberman.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
-Finished building: default.size.stdout
- 
-20:16:29 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-size   Timberman.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
-Finished building: default.size.stdout
- 
-20:17:08 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-size   Timberman.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
-Finished building: default.size.stdout
- 
-20:17:42 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-size   Timberman.elf 
-   text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
-Finished building: default.size.stdout
- 
-20:18:57 **** Incremental Build of configuration Debug for project Timberman ****
+21:08:44 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -112,119 +136,222 @@ Finished building target: Timberman.elf
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
+  21696	    104	   2064	  23864	   5d38	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:19:18 **** Incremental Build of configuration Debug for project Timberman ****
+21:10:41 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:79:13: warning: unused variable 'startCol' [-Wunused-variable]
+   79 |         int startCol = (16 - strlen(scoreText)) / 2 + 1;
+      |             ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
+  21672	    104	   2064	  23840	   5d20	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:20:58 **** Incremental Build of configuration Debug for project Timberman ****
+21:11:56 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21672	    104	   2064	  23840	   5d20	Timberman.elf
+Finished building: default.size.stdout
+ 
+21:12:18 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21672	    104	   2064	  23840	   5d20	Timberman.elf
+Finished building: default.size.stdout
+ 
+21:12:46 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:82:25: warning: unused variable 'newTime' [-Wunused-variable]
+   82 |         RTC_TimeTypeDef newTime;
+      |                         ^~~~~~~
+../Core/Src/main.c:81:14: warning: unused variable 'display' [-Wunused-variable]
+   81 |         bool display = true;
+      |              ^~~~~~~
+../Core/Src/main.c:79:13: warning: unused variable 'startCol' [-Wunused-variable]
+   79 |         int startCol = (16 - strlen(scoreText)) / 2 + 1;
+      |             ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
+  21592	    104	   2064	  23760	   5cd0	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:21:26 **** Incremental Build of configuration Debug for project Timberman ****
+21:14:55 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:79:13: warning: unused variable 'startCol' [-Wunused-variable]
+   79 |         int startCol = (16 - strlen(scoreText)) / 2 + 1;
+      |             ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19148	    104	   2032	  21284	   5324	Timberman.elf
+  21672	    104	   2064	  23840	   5d20	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:21:50 **** Incremental Build of configuration Debug for project Timberman ****
+21:15:52 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:82:25: warning: unused variable 'newTime' [-Wunused-variable]
+   82 |         RTC_TimeTypeDef newTime;
+      |                         ^~~~~~~
+../Core/Src/main.c:81:14: warning: unused variable 'display' [-Wunused-variable]
+   81 |         bool display = true;
+      |              ^~~~~~~
+../Core/Src/main.c:79:13: warning: unused variable 'startCol' [-Wunused-variable]
+   79 |         int startCol = (16 - strlen(scoreText)) / 2 + 1;
+      |             ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  19132	    104	   2032	  21268	   5314	Timberman.elf
+  21588	    104	   2064	  23756	   5ccc	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:30:11 **** Incremental Build of configuration Debug for project Timberman ****
+21:16:43 **** Incremental Build of configuration Debug for project MiGrochowski_RTC ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:268:1: warning: "/*" within comment [-Wcomment]
+  268 | /*
+      |  
+../Core/Src/main.c:116:9: warning: unused variable 'isGoing' [-Wunused-variable]
+  116 |     int isGoing = 1;
+      |         ^~~~~~~
+../Core/Src/main.c:111:21: warning: unused variable 'state' [-Wunused-variable]
+  111 |     RTC_TimeTypeDef state;
+      |                     ^~~~~
+../Core/Src/main.c:110:21: warning: unused variable 'new_time' [-Wunused-variable]
+  110 |     RTC_TimeTypeDef new_time;
+      |                     ^~~~~~~~
+arm-none-eabi-gcc -o "MiGrochowski_RTC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\MiGrochowski_RTC\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MiGrochowski_RTC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MiGrochowski_RTC.elf
+ 
+arm-none-eabi-size   MiGrochowski_RTC.elf 
+arm-none-eabi-objdump -h -S  MiGrochowski_RTC.elf  > "MiGrochowski_RTC.list"
+   text	   data	    bss	    dec	    hex	filename
+  19176	    100	   2036	  21312	   5340	MiGrochowski_RTC.elf
+Finished building: default.size.stdout
+ 
+Finished building: MiGrochowski_RTC.list
+ 
+21:17:13 **** Incremental Build of configuration Debug for project MiGrochowski_RTC ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:267:1: warning: "/*" within comment [-Wcomment]
+  267 | /*
+      |  
+../Core/Src/main.c:116:9: warning: unused variable 'isGoing' [-Wunused-variable]
+  116 |     int isGoing = 1;
+      |         ^~~~~~~
+../Core/Src/main.c:112:21: warning: unused variable 'date' [-Wunused-variable]
+  112 |     RTC_DateTypeDef date;
+      |                     ^~~~
+../Core/Src/main.c:111:21: warning: unused variable 'state' [-Wunused-variable]
+  111 |     RTC_TimeTypeDef state;
+      |                     ^~~~~
+../Core/Src/main.c:110:21: warning: unused variable 'new_time' [-Wunused-variable]
+  110 |     RTC_TimeTypeDef new_time;
+      |                     ^~~~~~~~
+arm-none-eabi-gcc -o "MiGrochowski_RTC.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\MiGrochowski_RTC\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MiGrochowski_RTC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MiGrochowski_RTC.elf
+ 
+arm-none-eabi-size   MiGrochowski_RTC.elf 
+arm-none-eabi-objdump -h -S  MiGrochowski_RTC.elf  > "MiGrochowski_RTC.list"
+   text	   data	    bss	    dec	    hex	filename
+  19008	    100	   2036	  21144	   5298	MiGrochowski_RTC.elf
+Finished building: default.size.stdout
+ 
+Finished building: MiGrochowski_RTC.list
+ 
+21:18:01 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:105:36: warning: passing argument 2 of 'HAL_RTC_GetDate' from incompatible pointer type [-Wincompatible-pointer-types]
+  105 |             HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
+      |                                    ^~~~~
+      |                                    |
+      |                                    RTC_TimeTypeDef *
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:933:77: note: expected 'RTC_DateTypeDef *' but argument is of type 'RTC_TimeTypeDef *'
+  933 | HAL_StatusTypeDef HAL_RTC_GetDate(RTC_HandleTypeDef *hrtc, RTC_DateTypeDef *sDate, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:79:13: warning: unused variable 'startCol' [-Wunused-variable]
+   79 |         int startCol = (16 - strlen(scoreText)) / 2 + 1;
+      |             ^~~~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  18632	    104	   2032	  20768	   5120	Timberman.elf
+  21844	    104	   2064	  24012	   5dcc	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
-20:33:31 **** Incremental Build of configuration Debug for project Timberman ****
+21:18:54 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:105:36: warning: passing argument 2 of 'HAL_RTC_GetDate' from incompatible pointer type [-Wincompatible-pointer-types]
+  105 |             HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
+      |                                    ^~~~~
+      |                                    |
+      |                                    RTC_TimeTypeDef *
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:933:77: note: expected 'RTC_DateTypeDef *' but argument is of type 'RTC_TimeTypeDef *'
+  933 | HAL_StatusTypeDef HAL_RTC_GetDate(RTC_HandleTypeDef *hrtc, RTC_DateTypeDef *sDate, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:85:14: warning: unused variable 'string' [-Wunused-variable]
+   85 |         char string[16];
+      |              ^~~~~~
 arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Timberman.elf
  
 arm-none-eabi-size   Timberman.elf 
 arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  18632	    104	   2032	  20768	   5120	Timberman.elf
-Finished building: default.size.stdout
- 
-Finished building: Timberman.list
- 
-20:34:11 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Timberman.elf
- 
-arm-none-eabi-size   Timberman.elf 
-arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
-   text	   data	    bss	    dec	    hex	filename
-  19144	    104	   2032	  21280	   5320	Timberman.elf
-Finished building: default.size.stdout
- 
-Finished building: Timberman.list
- 
-20:35:05 **** Incremental Build of configuration Debug for project Timberman ****
-make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Timberman.elf
- 
-arm-none-eabi-size   Timberman.elf 
-arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
-   text	   data	    bss	    dec	    hex	filename
-  19140	    104	   2032	  21276	   531c	Timberman.elf
+  21872	    104	   2064	  24040	   5de8	Timberman.elf
 Finished building: default.size.stdout
  
 Finished building: Timberman.list

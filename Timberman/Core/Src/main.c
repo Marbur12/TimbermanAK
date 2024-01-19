@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -76,9 +77,15 @@ void menu() {
 
 	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
-	int display = 0;
+
+	bool display = true;
+	RTC_TimeTypeDef newTime;
+	RTC_TimeTypeDef time;
+	RTC_TimeTypeDef date;
+	char string[16];
 
 	do {
+		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
@@ -95,17 +102,23 @@ void menu() {
 							lcd_print(1, 1, "RIGHT");*/
 
 			lcd_print(1, 4, "Timberman!");
-			if (display == 0) {
+            HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
+			HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+			if (time.Seconds > 2) {
+				display = !display;
+				newTime = time;
+				newTime.Seconds = 0;
+				newTime.SecondFraction = 0;
+				newTime.SubSeconds = 0;
+				HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
+				lcd_clear();
+			}
+			if (display) {
 				lcd_print(2, startCol, scoreText);
-				display = 1;
 			}
-			else if (display == 1) {
+			else if (!display) {
 				lcd_print(2, 2, "Start = PRESS");
-				display = 0;
 			}
-
-			HAL_Delay(1500);
-			lcd_clear();
 		}
 
 	} while (value > 4000);
@@ -125,6 +138,8 @@ void gameOver() {
 	lcd_clear();
 	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
+
+
 
 	while (1) {
 		lcd_print(1, startCol, scoreText);
@@ -269,6 +284,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		menu();
+		game();
 	}
   /* USER CODE END 3 */
 }
@@ -399,6 +416,7 @@ static void MX_RTC_Init(void)
 
   RTC_TimeTypeDef sTime = {0};
   RTC_DateTypeDef sDate = {0};
+  RTC_AlarmTypeDef sAlarm = {0};
 
   /* USER CODE BEGIN RTC_Init 1 */
 
@@ -440,6 +458,24 @@ static void MX_RTC_Init(void)
   sDate.Year = 0x0;
 
   if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /** Enable the Alarm A
+  */
+  sAlarm.AlarmTime.Hours = 0x0;
+  sAlarm.AlarmTime.Minutes = 0x0;
+  sAlarm.AlarmTime.Seconds = 0x0;
+  sAlarm.AlarmTime.SubSeconds = 0x0;
+  sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  sAlarm.AlarmMask = RTC_ALARMMASK_NONE;
+  sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
+  sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
+  sAlarm.AlarmDateWeekDay = 0x1;
+  sAlarm.Alarm = RTC_ALARM_A;
+  if (HAL_RTC_SetAlarm(&hrtc, &sAlarm, RTC_FORMAT_BCD) != HAL_OK)
   {
     Error_Handler();
   }
