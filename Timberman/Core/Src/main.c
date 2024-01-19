@@ -70,6 +70,9 @@ static void MX_RTC_Init(void);
 int score = 0;
 int highScore = 12;
 char scoreText[16] = "";
+RTC_TimeTypeDef newTime;
+RTC_TimeTypeDef time;
+RTC_DateTypeDef date;
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
@@ -78,9 +81,6 @@ void menu() {
 	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
-	RTC_TimeTypeDef newTime;
-	RTC_TimeTypeDef time;
-	RTC_TimeTypeDef date;
 
 	do {
 		HAL_Delay(50);
@@ -126,12 +126,9 @@ void gameOver() {
 	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
-	RTC_TimeTypeDef newTime;
-	RTC_TimeTypeDef time;
-	RTC_TimeTypeDef date;
 
 	do {
-		HAL_Delay(500);
+		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
@@ -168,7 +165,6 @@ void gameOver() {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
 	// ----------------------------------------------------- Custom characters variables ----------------------------------------------------
 	char rightManHit[] = { 0x00, 0x00, 0x1F, 0x1D, 0x04, 0x04, 0x1F, 0x1F };
 	char leftManHit[] = { 0x1F, 0x1F, 0x04, 0x04, 0x1D, 0x1F, 0x00, 0x00 };
@@ -194,7 +190,6 @@ int main(void)
 
 	// ---------------------------------------------------- Initialization of LCD screen -----------------------------------------------------
 	lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
-	//LCD_init();
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
 	KPAD_init(&hadc1);
@@ -212,8 +207,6 @@ int main(void)
   MX_ADC1_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
-	lcd_clear();
-	// lcd_print(1,1,"Hello World 2");
 
 	// ------------------------------------------------ Assigning custom characters to memory ------------------------------------------------
 	lcd_cmd(0x40);
@@ -270,22 +263,24 @@ int main(void)
 	 lcd_gotoxy(2, 4);
 	 lcd_char_cp(7);*/
 
-	//lcd_print(1, 1, "HelloTest123");
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-
 	//menu();
 	//gameOver();
+	/*lcd_clear();
+	lcd_print(1, 1, "HelloTest123");*/
 	while (1) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		menu();
-		game();
-		/*gameOver();
+		/*menu();
 		game();*/
+		gameOver();
+		game();
+		//lcd_print(1, 1, "HelloTest123");
 	}
   /* USER CODE END 3 */
 }
@@ -314,7 +309,13 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.MSIState = RCC_MSI_ON;
   RCC_OscInitStruct.MSICalibrationValue = 0;
   RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_MSI;
+  RCC_OscInitStruct.PLL.PLLM = 1;
+  RCC_OscInitStruct.PLL.PLLN = 16;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV7;
+  RCC_OscInitStruct.PLL.PLLQ = RCC_PLLQ_DIV2;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -324,8 +325,8 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
@@ -470,7 +471,8 @@ static void MX_RTC_Init(void)
   sAlarm.AlarmTime.SubSeconds = 0x0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
-  sAlarm.AlarmMask = RTC_ALARMMASK_NONE;
+  sAlarm.AlarmMask = RTC_ALARMMASK_DATEWEEKDAY|RTC_ALARMMASK_HOURS
+                              |RTC_ALARMMASK_MINUTES;
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_ALL;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 0x1;

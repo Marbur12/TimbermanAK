@@ -1363,3 +1363,42 @@ java.io.FileNotFoundException: C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\
 
 !ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-19 20:57:39.785
 !MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-19 22:46:07.700
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 95 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-19 22:46:07.703
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-19 22:46:07.704
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 95 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-19 22:46:07.704
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:04:36.578
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 159 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:04:36.579
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:04:36.579
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 159 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:04:36.580
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:13:50.769
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 171 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:13:50.769
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:13:50.770
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 171 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-01-20 00:13:50.770
+!MESSAGE Existing sessions are:
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2024-01-20 00:26:45.049
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@771f1555): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
