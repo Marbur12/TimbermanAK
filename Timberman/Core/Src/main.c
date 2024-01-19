@@ -69,23 +69,46 @@ char scoreText[16] = "";
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
+
 	lcd_clear();
 	sprintf(scoreText, "Score = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
-	while (1) {
-		lcd_print(1, 4, "Timberman!");
-		lcd_print(2, startCol, scoreText);
+	HAL_ADC_Start(&hadc1);
 
-		HAL_Delay(1500);
-		lcd_clear();
+	int display = 0;
 
-		lcd_print(1, 4, "Timberman!");
-		lcd_print(2, 2, "Start = LEFT");
 
-		HAL_Delay(1500);
-		lcd_clear();
-	}
+	do {
+		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
+			value = HAL_ADC_GetValue(&hadc1);
+
+						/*if (value > 4000)
+							lcd_print(1, 1, "NOTHING");
+						if (value > 2750 && value < 3000)
+							lcd_print(1, 1, "LEFT");
+						if (value > 700 && value < 820)
+							lcd_print(1, 1, "UP");
+						if (value > 1800 && value < 1920)
+							lcd_print(1, 1, "DOWN");
+						if (value >= 0 && value < 500)
+							lcd_print(1, 1, "RIGHT");*/
+
+			lcd_print(1, 4, "Timberman!");
+			if (display == 0) {
+				lcd_print(2, startCol, scoreText);
+				display = 1;
+			}
+			else if (display == 1) {
+				lcd_print(2, 2, "Start == LEFT");
+				display = 0;
+			}
+
+			HAL_Delay(1500);
+			lcd_clear();
+		}
+
+	} while (!(value > 2750 && value < 3000));
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Game ----------------------------------------------------------
@@ -115,6 +138,7 @@ void gameOver() {
 		lcd_clear();
 	}
 
+	menu();
 }
 // ----------------------------------------------------------------------------------------------------------------------------
 
@@ -239,23 +263,8 @@ int main(void) {
 
 	while (1) {
 		/* USER CODE END WHILE */
-		HAL_ADC_Start(&hadc1);
-		HAL_Delay(200);
-		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
-			lcd_clear();
-			value = HAL_ADC_GetValue(&hadc1);
-
-			if (value > 4000)
-				lcd_print(1, 1, "NOTHING");
-			if (value > 2750 && value < 3000)
-				lcd_print(1, 1, "LEFT");
-			if (value > 700 && value < 820)
-				lcd_print(1, 1, "UP");
-			if (value > 1800 && value < 1920)
-				lcd_print(1, 1, "DOWN");
-			if (value >= 0 && value < 500)
-				lcd_print(1, 1, "RIGHT");
-		}
+		menu();
+		game();
 		/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */
