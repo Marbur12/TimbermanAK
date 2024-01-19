@@ -61,14 +61,31 @@ static void MX_ADC1_Init(void);
 
 // -------------------------------------------------------- Variables --------------------------------------------------------
 int score = 0;
-int higScore = 0;
+int highScore = 12;
 char scoreText[16] = "";
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
+	lcd_clear();
 	lcd_print(1, 4, "Timberman!");
 	lcd_print(2, 2, "Select = START");
 
+	sprintf(scoreText, "Score = %d", highScore);
+	int startCol = (16 - strlen(scoreText)) / 2 + 1;
+
+	while(1) {
+			lcd_print(1, 4, "Timberman!");
+			lcd_print(2, startCol, scoreText);
+
+			HAL_Delay(1500);
+			lcd_clear();
+
+			lcd_print(1, 4, "Timberman!");
+			lcd_print(2, 2, "Select = START");
+
+			HAL_Delay(1500);
+			lcd_clear();
+		}
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Game ----------------------------------------------------------
@@ -79,6 +96,7 @@ void game() {
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
 void gameOver() {
+	lcd_clear();
 	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 
@@ -204,7 +222,8 @@ int main(void) {
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
-	gameOver();
+	menu();
+	//gameOver();
 	while (1) {
 		/* USER CODE END WHILE */
 
