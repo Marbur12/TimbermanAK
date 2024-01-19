@@ -246,21 +246,20 @@ int main(void) {
 			lcd_clear();
 			value = HAL_ADC_GetValue(&hadc1);
 
-			sprintf(zmienna, "%u", value);
+			/*sprintf(zmienna, "%u", value);
 			lcd_print(1, 1, zmienna);
 			HAL_Delay(200);
-			lcd_clear();
-
-			/*if (value > 2700 && value < 2900)
-				LCD_print("SELECT");
-			if (value > 1900 && value < 2300)
-				LCD_print("LEFT");
-			if (value > 1300 && value < 1600)
-				LCD_print("DOWN");
-			if (value > 500 && value < 800)
-				LCD_print("UP");
-			if (value < 500 && value >= 0)
-				LCD_print("RIGHT");*/
+			lcd_clear();*/
+			if (value > 4000)
+				lcd_print(1, 1, "NIC");
+			if (value > 2750 && value < 3000)
+				lcd_print(1, 1, "LEFT");
+			if (value > 700 && value < 820)
+				lcd_print(1, 1, "UP");
+			if (value > 1800 && value < 1920)
+				lcd_print(1, 1, "DOWN");
+			if (value >= 0 && value < 500)
+				lcd_print(1, 1, "RIGHT");
 		}
 		/* USER CODE BEGIN 3 */
 	}
