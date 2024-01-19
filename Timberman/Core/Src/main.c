@@ -77,7 +77,6 @@ void menu() {
 
 	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
-
 	bool display = true;
 	RTC_TimeTypeDef newTime;
 	RTC_TimeTypeDef time;
@@ -89,18 +88,6 @@ void menu() {
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
 
-			/*if (value > 4000)
-			 lcd_print(1, 1, "NOTHING");
-			 if (value > 2750 && value < 3000)
-			 lcd_print(1, 1, "LEFT");
-			 if (value > 700 && value < 820)
-			 lcd_print(1, 1, "UP");
-			 if (value > 1800 && value < 1920)
-			 lcd_print(1, 1, "DOWN");
-			 if (value >= 0 && value < 500)
-			 lcd_print(1, 1, "RIGHT");*/
-
-			lcd_print(1, 4, "Timberman!");
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 			HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
 			if (time.Seconds > 2) {
@@ -112,13 +99,14 @@ void menu() {
 				HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
 				lcd_clear();
 			}
+
+			lcd_print(1, 4, "Timberman!");
 			if (display) {
 				lcd_print(2, startCol, scoreText);
 			} else if (!display) {
 				lcd_print(2, 2, "Start = PRESS");
 			}
 		}
-
 	} while (value > 4000);
 }
 // ---------------------------------------------------------------------------------------------------------------------------
@@ -133,37 +121,14 @@ void game() {
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
 void gameOver() {
-	/*lcd_clear();
-	 sprintf(scoreText, "Score = %d", score);
-	 int startCol = (16 - strlen(scoreText)) / 2 + 1;
-
-
-
-	 while (1) {
-	 lcd_print(1, startCol, scoreText);
-	 lcd_print(2, 2, "Menu = LEFT");
-
-	 HAL_Delay(1500);
-	 lcd_clear();
-
-	 lcd_print(1, 3, "Game Over :(");
-	 lcd_print(2, 2, "Menu = LEFT");
-
-	 HAL_Delay(1500);
-	 lcd_clear();
-	 }*/
-
 	lcd_clear();
 
 	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
-
 	bool display = true;
 	RTC_TimeTypeDef newTime;
 	RTC_TimeTypeDef time;
 	RTC_TimeTypeDef date;
-
-	char string[16];
 
 	do {
 		HAL_Delay(500);
@@ -182,6 +147,7 @@ void gameOver() {
 				HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
 				lcd_clear();
 			}
+
 			if (display) {
 				lcd_print(1, startCol, scoreText);
 			} else if (!display) {
@@ -189,7 +155,6 @@ void gameOver() {
 			}
 			lcd_print(2, 3, "Menu = PRESS");
 		}
-
 	} while (value > 4000);
 }
 // ----------------------------------------------------------------------------------------------------------------------------
