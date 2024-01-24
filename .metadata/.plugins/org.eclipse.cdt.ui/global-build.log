@@ -318,3 +318,156 @@ arm-none-eabi-size   Timberman.elf
   21888	    100	   2116	  24104	   5e28	Timberman.elf
 Finished building: default.size.stdout
  
+22:03:42 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:75:17: error: 'time' redeclared as different kind of symbol
+   75 | RTC_TimeTypeDef time;
+      |                 ^~~~
+In file included from ../Core/Src/main.c:31:
+C:\nonSystem\IT\Programs\STM32\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.1.202309131626\tools\arm-none-eabi\include\time.h:59:12: note: previous declaration of 'time' with type 'time_t(time_t *)' {aka 'long long int(long long int *)'}
+   59 | time_t     time (time_t *_timer);
+      |            ^~~~
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:05:04 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:93:48: warning: passing argument 2 of 'HAL_RTC_GetTime' from incompatible pointer type [-Wincompatible-pointer-types]
+   93 |                         HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+      |                                                ^~~~~
+      |                                                |
+      |                                                time_t (*)(time_t *) {aka long long int (*)(long long int *)}
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:931:77: note: expected 'RTC_TimeTypeDef *' but argument is of type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  931 | HAL_StatusTypeDef HAL_RTC_GetTime(RTC_HandleTypeDef *hrtc, RTC_TimeTypeDef *sTime, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:94:33: error: request for member 'Seconds' in something not a structure or union
+   94 |                         if (time.Seconds > 2) {
+      |                                 ^
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+../Core/Src/main.c: In function 'gameOver':
+../Core/Src/main.c:153:48: warning: passing argument 2 of 'HAL_RTC_GetTime' from incompatible pointer type [-Wincompatible-pointer-types]
+  153 |                         HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+      |                                                ^~~~~
+      |                                                |
+      |                                                time_t (*)(time_t *) {aka long long int (*)(long long int *)}
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:931:77: note: expected 'RTC_TimeTypeDef *' but argument is of type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  931 | HAL_StatusTypeDef HAL_RTC_GetTime(RTC_HandleTypeDef *hrtc, RTC_TimeTypeDef *sTime, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:154:33: error: request for member 'Seconds' in something not a structure or union
+  154 |                         if (time.Seconds > 2) {
+      |                                 ^
+../Core/Src/main.c:156:43: error: incompatible types when assigning to type 'RTC_TimeTypeDef' from type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  156 |                                 newTime = time;
+      |                                           ^~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:05:10 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'menu':
+../Core/Src/main.c:94:33: error: request for member 'Seconds' in something not a structure or union
+   94 |                         if (time.Seconds > 2) {
+      |                                 ^
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+../Core/Src/main.c: In function 'gameOver':
+../Core/Src/main.c:153:48: warning: passing argument 2 of 'HAL_RTC_GetTime' from incompatible pointer type [-Wincompatible-pointer-types]
+  153 |                         HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+      |                                                ^~~~~
+      |                                                |
+      |                                                time_t (*)(time_t *) {aka long long int (*)(long long int *)}
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:931:77: note: expected 'RTC_TimeTypeDef *' but argument is of type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  931 | HAL_StatusTypeDef HAL_RTC_GetTime(RTC_HandleTypeDef *hrtc, RTC_TimeTypeDef *sTime, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:154:33: error: request for member 'Seconds' in something not a structure or union
+  154 |                         if (time.Seconds > 2) {
+      |                                 ^
+../Core/Src/main.c:156:43: error: incompatible types when assigning to type 'RTC_TimeTypeDef' from type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  156 |                                 newTime = time;
+      |                                           ^~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:05:14 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+../Core/Src/main.c: In function 'gameOver':
+../Core/Src/main.c:153:48: warning: passing argument 2 of 'HAL_RTC_GetTime' from incompatible pointer type [-Wincompatible-pointer-types]
+  153 |                         HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+      |                                                ^~~~~
+      |                                                |
+      |                                                time_t (*)(time_t *) {aka long long int (*)(long long int *)}
+In file included from ../Core/Inc/stm32l4xx_hal_conf.h:410,
+                 from ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h:931:77: note: expected 'RTC_TimeTypeDef *' but argument is of type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  931 | HAL_StatusTypeDef HAL_RTC_GetTime(RTC_HandleTypeDef *hrtc, RTC_TimeTypeDef *sTime, uint32_t Format);
+      |                                                            ~~~~~~~~~~~~~~~~~^~~~~
+../Core/Src/main.c:154:33: error: request for member 'Seconds' in something not a structure or union
+  154 |                         if (time.Seconds > 2) {
+      |                                 ^
+../Core/Src/main.c:156:43: error: incompatible types when assigning to type 'RTC_TimeTypeDef' from type 'time_t (*)(time_t *)' {aka 'long long int (*)(long long int *)'}
+  156 |                                 newTime = time;
+      |                                           ^~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:05:30 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  23068	    112	   2072	  25252	   62a4	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 

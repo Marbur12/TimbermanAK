@@ -72,7 +72,7 @@ int score = 0;
 int highScore = 0;
 char scoreText[16] = "";
 RTC_TimeTypeDef newTime;
-RTC_TimeTypeDef time;
+RTC_TimeTypeDef currentTime;
 RTC_DateTypeDef date;
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
@@ -90,10 +90,10 @@ void menu() {
 			value = HAL_ADC_GetValue(&hadc1);
 
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-			HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
-			if (time.Seconds > 2) {
+			HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
+			if (currentTime.Seconds > 2) {
 				display = !display;
-				newTime = time;
+				newTime = currentTime;
 				newTime.Seconds = 0;
 				newTime.SecondFraction = 0;
 				newTime.SubSeconds = 0;
@@ -115,15 +115,25 @@ void menu() {
 void game() {
 	int randomNumber;
 	int isAlive = true;
+	int display[2][6];
 
 	while(isAlive) {
 		randomNumber = rand() % 100;
-	}
-	lcd_clear();
-	while (1) {
-		lcd_print(1, 1, "Test");
-	}
 
+		if(randomNumber % 2 == 0) {
+			// generate branch on the right
+		}
+		else {
+			//generate branch on the left
+		}
+
+		sprintf(scoreText, "%d", highScore);
+		lcd_print(1, 1, "SCORE:");
+		lcd_print(2, 1, scoreText);
+		lcd_print(1, 16, "|");
+		lcd_print(2, 16, "|");
+
+	}
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
@@ -141,10 +151,10 @@ void gameOver() {
 			value = HAL_ADC_GetValue(&hadc1);
 
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
-			HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
-			if (time.Seconds > 2) {
+			HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
+			if (currentTime.Seconds > 2) {
 				display = !display;
-				newTime = time;
+				newTime = currentTime;
 				newTime.Seconds = 0;
 				newTime.SecondFraction = 0;
 				newTime.SubSeconds = 0;
@@ -285,7 +295,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		/*menu();
 		game();*/
-		gameOver();
+		//gameOver();
 		game();
 		//lcd_print(1, 1, "HelloTest123");
 	}

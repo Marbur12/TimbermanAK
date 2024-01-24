@@ -1,10 +1,24 @@
-21:28:19 **** Incremental Build of configuration Debug for project Timberman ****
+22:05:30 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:121:32: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  121 |                 randomNumber = rand() % 100;
+      |                                ^~~~
+../Core/Src/main.c:118:13: warning: unused variable 'display' [-Wunused-variable]
+  118 |         int display[2][8];
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
 arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
    text	   data	    bss	    dec	    hex	filename
-  21888	    100	   2116	  24104	   5e28	Timberman.elf
+  23068	    112	   2072	  25252	   62a4	Timberman.elf
 Finished building: default.size.stdout
  
+Finished building: Timberman.list
+ 
 
-21:28:19 Build Finished. 0 errors, 0 warnings. (took 335ms)
+22:05:31 Build Finished. 0 errors, 2 warnings. (took 1s.392ms)
 
