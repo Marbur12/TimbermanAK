@@ -152,56 +152,58 @@ void game() {
 			if (value > 700 && value < 820) { // move player to right
 				display[0][5] = 1;
 				display[1][5] = 0;
-			}
-			else if (value > 1800 && value < 1920) { // move player to left
+			} else if (value > 1800 && value < 1920) { // move player to left
 				display[0][5] = 0;
 				display[1][5] = 2;
 			}
 
-		randomNumber = rand() % 100;
+			randomNumber = rand() % 100;
 
-		/* ====== LOOSING CONDITION ====== *//*
-		 if (display[0][5] == 2 && display[0][4] == 4) isAlive = false;
-		 else if (display[1][5] == 3 && display[1][4] == 5) isAlive = false;
+			/* ====== LOOSING CONDITION ====== *//*
+			 if (display[0][5] == 2 && display[0][4] == 4) isAlive = false;
+			 else if (display[1][5] == 3 && display[1][4] == 5) isAlive = false;
 
-		 /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
-		 if (display[0][5] == 2) display[1][5] = display[1][4];
-		 else if (display[1][5] == 3) display[0][5] = display[0][4];
+			 /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
+			 if (display[0][5] == 2) display[1][5] = display[1][4];
+			 else if (display[1][5] == 3) display[0][5] = display[0][4];
 
-		 /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
-		 for(int i = 4; i > 0; i--){
-		 display[0][i] = display[0][i-1]; // move right part of the tree down by 1
-		 display[1][i] = display[1][i-1]; // move left part of the tree down by 1
-		 }
+			 /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
+			 for(int i = 4; i > 0; i--){
+			 display[0][i] = display[0][i-1]; // move right part of the tree down by 1
+			 display[1][i] = display[1][i-1]; // move left part of the tree down by 1
+			 }
 
-		 /* ====== GENERATING TOP OF THE TREE ====== *//*
-		 if(randomNumber % 2 == 0) {
-		 display[0][0] = 4; // set right part of tree on height i to branch
-		 display[1][0] = 7; // set left part of tree on height i to log
-		 }
-		 else {
-		 display[0][0] = 6; // set right part of tree on height i to log
-		 display[1][0] = 5; // set left part of tree on height i to branch
-		 }*/
-		}
-		/* ====== DISPLAYING EVERYTHING ====== */
-		lcd_clear();
-		sprintf(scoreText, "%d", highScore);
-		lcd_print(1, 1, "SCORE:");
-		lcd_print(2, 1, scoreText);
-		lcd_print(1, 16, "|");
-		lcd_print(2, 16, "|");
-		for (int i = 0; i < 2; i++) {
-			for (int j = 0; j < 6; j++) {
-				lcd_gotoxy(i + 1, j + 9);
-				lcd_char_cp(display[i][j]);
+			 /* ====== GENERATING TOP OF THE TREE ====== *//*
+			 if(randomNumber % 2 == 0) {
+			 display[0][0] = 4; // set right part of tree on height i to branch
+			 display[1][0] = 7; // set left part of tree on height i to log
+			 }
+			 else {
+			 display[0][0] = 6; // set right part of tree on height i to log
+			 display[1][0] = 5; // set left part of tree on height i to branch
+			 }*/
+
+			/* ====== DISPLAYING EVERYTHING ====== */
+			if ((value > 700 && value < 820)
+					|| (value > 1800 && value < 1920)) {
+				lcd_clear();
+				sprintf(scoreText, "%d", highScore);
+				lcd_print(1, 1, "SCORE:");
+				lcd_print(2, 1, scoreText);
+				lcd_print(1, 16, "|");
+				lcd_print(2, 16, "|");
+				for (int i = 0; i < 2; i++) {
+					for (int j = 0; j < 6; j++) {
+						lcd_gotoxy(i + 1, j + 9);
+						lcd_char_cp(display[i][j]);
+					}
+				}
 			}
 		}
 		/*lcd_print(1, 1, temp1);
 		 lcd_print(2, 1, temp2);*/
 
 		//HAL_Delay(300);
-
 	}
 	//gameOver();
 }

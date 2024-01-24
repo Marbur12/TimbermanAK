@@ -2893,3 +2893,160 @@ Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
+00:04:33 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:167:18: warning: "/*" within comment [-Wcomment]
+  167 |                  /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:171:18: warning: "/*" within comment [-Wcomment]
+  171 |                  /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:177:18: warning: "/*" within comment [-Wcomment]
+  177 |                  /* ====== GENERATING TOP OF THE TREE ====== *//*
+      |                   
+../Core/Src/main.c:124:14: warning: unused variable 'temp2' [-Wunused-variable]
+  124 |         char temp2[16];
+      |              ^~~~~
+../Core/Src/main.c:123:14: warning: unused variable 'temp1' [-Wunused-variable]
+  123 |         char temp1[16];
+      |              ^~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  24696	    112	   2072	  26880	   6900	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+00:06:11 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:167:18: warning: "/*" within comment [-Wcomment]
+  167 |                  /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:171:18: warning: "/*" within comment [-Wcomment]
+  171 |                  /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:177:18: warning: "/*" within comment [-Wcomment]
+  177 |                  /* ====== GENERATING TOP OF THE TREE ====== *//*
+      |                   
+../Core/Src/main.c:124:14: warning: unused variable 'temp2' [-Wunused-variable]
+  124 |         char temp2[16];
+      |              ^~~~~
+../Core/Src/main.c:123:14: warning: unused variable 'temp1' [-Wunused-variable]
+  123 |         char temp1[16];
+      |              ^~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  24696	    112	   2072	  26880	   6900	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+00:07:20 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:167:18: warning: "/*" within comment [-Wcomment]
+  167 |                  /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:171:18: warning: "/*" within comment [-Wcomment]
+  171 |                  /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
+      |                   
+../Core/Src/main.c:177:18: warning: "/*" within comment [-Wcomment]
+  177 |                  /* ====== GENERATING TOP OF THE TREE ====== *//*
+      |                   
+../Core/Src/main.c:253:5: warning: 'main' is normally a non-static function [-Wmain]
+  253 | int main(void) {
+      |     ^~~~
+../Core/Src/main.c:423:13: error: invalid storage class for function 'MX_ADC1_Init'
+  423 | static void MX_ADC1_Init(void) {
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:486:13: error: invalid storage class for function 'MX_RTC_Init'
+  486 | static void MX_RTC_Init(void) {
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:565:13: error: invalid storage class for function 'MX_GPIO_Init'
+  565 | static void MX_GPIO_Init(void) {
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:635:1: error: expected declaration or statement at end of input
+  635 | }
+      | ^
+../Core/Src/main.c:124:14: warning: unused variable 'temp2' [-Wunused-variable]
+  124 |         char temp2[16];
+      |              ^~~~~
+../Core/Src/main.c:123:14: warning: unused variable 'temp1' [-Wunused-variable]
+  123 |         char temp1[16];
+      |              ^~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:62:13: warning: 'MX_GPIO_Init' used but never defined
+   62 | static void MX_GPIO_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:63:13: warning: 'MX_ADC1_Init' used but never defined
+   63 | static void MX_ADC1_Init(void);
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:64:13: warning: 'MX_RTC_Init' used but never defined
+   64 | static void MX_RTC_Init(void);
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:628:6: warning: 'Error_Handler' defined but not used [-Wunused-function]
+  628 | void Error_Handler(void) {
+      |      ^~~~~~~~~~~~~
+../Core/Src/main.c:565:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  565 | static void MX_GPIO_Init(void) {
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:486:13: warning: 'MX_RTC_Init' defined but not used [-Wunused-function]
+  486 | static void MX_RTC_Init(void) {
+      |             ^~~~~~~~~~~
+../Core/Src/main.c:423:13: warning: 'MX_ADC1_Init' defined but not used [-Wunused-function]
+  423 | static void MX_ADC1_Init(void) {
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c:373:6: warning: 'SystemClock_Config' defined but not used [-Wunused-function]
+  373 | void SystemClock_Config(void) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:253:5: warning: 'main' defined but not used [-Wunused-function]
+  253 | int main(void) {
+      |     ^~~~
+../Core/Src/main.c:212:6: warning: 'gameOver' defined but not used [-Wunused-function]
+  212 | void gameOver() {
+      |      ^~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+00:07:30 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:166:26: warning: "/*" within comment [-Wcomment]
+  166 |                          /* ====== MOVING BOTTOM PART OF TREE DOWN ====== *//*
+      |                           
+../Core/Src/main.c:170:26: warning: "/*" within comment [-Wcomment]
+  170 |                          /* ====== MOVING MIDDLE PART OF TREE DOWN ====== *//*
+      |                           
+../Core/Src/main.c:176:26: warning: "/*" within comment [-Wcomment]
+  176 |                          /* ====== GENERATING TOP OF THE TREE ====== *//*
+      |                           
+../Core/Src/main.c:124:14: warning: unused variable 'temp2' [-Wunused-variable]
+  124 |         char temp2[16];
+      |              ^~~~~
+../Core/Src/main.c:123:14: warning: unused variable 'temp1' [-Wunused-variable]
+  123 |         char temp1[16];
+      |              ^~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  24740	    112	   2072	  26924	   692c	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
