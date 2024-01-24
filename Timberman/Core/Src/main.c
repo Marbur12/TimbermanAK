@@ -132,27 +132,29 @@ void game() {
 	}
 	display[0][5] = 2; // set right part of tree at the bottom to right man
 	display[1][5] = 7;// set left part of tree at the bottom to log
-	/* ======================================== */
 
-	while(0) {
+	/* ====== MAIN GAME LOOP ====== */
+	while(isAlive) {
 
 		// pressing the button to chop the tree
 
 		randomNumber = rand() % 100;
 
-		// Loosing condition
+		/* ====== LOOSING CONDITION ====== */
 		if (display[0][5] == 2 && display[0][4] == 4) isAlive = false;
 		else if (display[1][5] == 3 && display[1][4] == 5) isAlive = false;
 
-		// Moving bottom part of tree
+		/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
 		if (display[0][5] == 2) display[1][5] = display[1][4];
 		else if (display[1][5] == 3) display[0][5] = display[0][4];
 
+		/* ====== MOVING MIDDLE PART OF TREE DOWN ====== */
 		for(int i = 4; i > 0; i--){
 			display[0][i] = display[0][i-1]; // move right part of the tree down by 1
 			display[1][i] = display[1][i-1]; // move left part of the tree down by 1
 		}
 
+		/* ====== GENERATING TOP OF THE TREE ====== */
 		if(randomNumber % 2 == 0) {
 			display[0][0] = 4; // set right part of tree on height i to branch
 			display[1][0] = 7; // set left part of tree on height i to log
