@@ -117,6 +117,18 @@ void game() {
 	int isAlive = true;
 	int display[2][6];
 
+	for (int i = 1; i < 6; i++) {
+		randomNumber = rand() % 100;
+		if(randomNumber % 2 == 0) {
+			display[1][i] = 4; // set right part of tree on height i to branch
+			display[2][i] = 7; // set left part of tree on height i to log
+		}
+		else {
+			display[1][i] = 6; // set right part of tree on height i to log
+			display[2][i] = 5; // set left part of tree on height i to branch
+		}
+	}
+
 	while(isAlive) {
 		randomNumber = rand() % 100;
 
@@ -271,8 +283,6 @@ int main(void)
 
 	 lcd_gotoxy(2, 3);
 	 lcd_char_cp(5);
-
-
 
 	 lcd_gotoxy(1, 4);
 	 lcd_char_cp(6);
