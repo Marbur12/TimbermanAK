@@ -471,3 +471,50 @@ Finished building: default.size.stdout
  
 Finished building: Timberman.list
  
+22:15:23 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:32:20: warning: extra tokens at end of #include directive
+   32 | #include <stdlib.h>;
+      |                    ^
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:137:36: error: 'i' undeclared (first use in this function)
+  137 |                         display[1][i] = 4; // set right part of tree on height i to branch
+      |                                    ^
+../Core/Src/main.c:137:36: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:119:13: warning: variable 'display' set but not used [-Wunused-but-set-variable]
+  119 |         int display[2][6];
+      |             ^~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:37:54 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:32:20: warning: extra tokens at end of #include directive
+   32 | #include <stdlib.h>;
+      |                    ^
+../Core/Src/main.c: In function 'game':
+../Core/Src/main.c:173:9: warning: implicit declaration of function 'gameOver' [-Wimplicit-function-declaration]
+  173 |         gameOver();
+      |         ^~~~~~~~
+../Core/Src/main.c:118:13: warning: variable 'isAlive' set but not used [-Wunused-but-set-variable]
+  118 |         int isAlive = true;
+      |             ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:177:6: warning: conflicting types for 'gameOver'; have 'void()'
+  177 | void gameOver() {
+      |      ^~~~~~~~
+../Core/Src/main.c:173:9: note: previous implicit declaration of 'gameOver' with type 'void()'
+  173 |         gameOver();
+      |         ^~~~~~~~
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  25080	    112	   2120	  27312	   6ab0	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 

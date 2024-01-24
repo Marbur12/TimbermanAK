@@ -29,6 +29,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <time.h>
+#include <stdlib.h>;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -117,27 +118,50 @@ void game() {
 	int isAlive = true;
 	int display[2][6];
 
-	for (int i = 1; i < 6; i++) {
+	/* ====== GENERATE TREE AT THE START ====== */
+	for (int i = 1; i < 5; i++) {
 		randomNumber = rand() % 100;
 		if(randomNumber % 2 == 0) {
-			display[1][i] = 4; // set right part of tree on height i to branch
-			display[2][i] = 7; // set left part of tree on height i to log
+			display[0][i] = 4; // set right part of tree on height i to branch
+			display[1][i] = 7; // set left part of tree on height i to log
 		}
 		else {
-			display[1][i] = 6; // set right part of tree on height i to log
-			display[2][i] = 5; // set left part of tree on height i to branch
+			display[0][i] = 6; // set right part of tree on height i to log
+			display[1][i] = 5; // set left part of tree on height i to branch
 		}
 	}
+	display[0][5] = 2; // set right part of tree at the bottom to right man
+	display[1][5] = 7;// set left part of tree at the bottom to log
+	/* ======================================== */
 
-	while(isAlive) {
+	while(0) {
+
+		// pressing the button to chop the tree
+
 		randomNumber = rand() % 100;
 
+		// Loosing condition
+		if (display[0][5] == 2 && display[0][4] == 4) isAlive = false;
+		else if (display[1][5] == 3 && display[1][4] == 5) isAlive = false;
+
+		// Moving bottom part of tree
+		if (display[0][5] == 2) display[1][5] = display[1][4];
+		else if (display[1][5] == 3) display[0][5] = display[0][4];
+
+		for(int i = 4; i > 0; i--){
+			display[0][i] = display[0][i-1]; // move right part of the tree down by 1
+			display[1][i] = display[1][i-1]; // move left part of the tree down by 1
+		}
+
 		if(randomNumber % 2 == 0) {
-			// generate branch on the right
+			display[0][0] = 4; // set right part of tree on height i to branch
+			display[1][0] = 7; // set left part of tree on height i to log
 		}
 		else {
-			//generate branch on the left
+			display[0][0] = 6; // set right part of tree on height i to log
+			display[1][0] = 5; // set left part of tree on height i to branch
 		}
+
 
 		sprintf(scoreText, "%d", highScore);
 		lcd_print(1, 1, "SCORE:");
@@ -146,6 +170,7 @@ void game() {
 		lcd_print(2, 16, "|");
 
 	}
+	gameOver();
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
@@ -267,28 +292,28 @@ int main(void)
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 
 	/*lcd_gotoxy(1, 1);
-	 lcd_char_cp(0);
+	 lcd_char_cp(0); // right man hit
 
 	 lcd_gotoxy(2, 1);
-	 lcd_char_cp(1);
+	 lcd_char_cp(1); // left  man hit
 
 	 lcd_gotoxy(1, 2);
-	 lcd_char_cp(2);
+	 lcd_char_cp(2); // right man
 
 	 lcd_gotoxy(2, 2);
-	 lcd_char_cp(3);
+	 lcd_char_cp(3); // left  man
 
 	 lcd_gotoxy(1, 3);
-	 lcd_char_cp(4);
+	 lcd_char_cp(4); // branch right
 
 	 lcd_gotoxy(2, 3);
-	 lcd_char_cp(5);
+	 lcd_char_cp(5); // branch left
 
 	 lcd_gotoxy(1, 4);
-	 lcd_char_cp(6);
+	 lcd_char_cp(6); // log right
 
 	 lcd_gotoxy(2, 4);
-	 lcd_char_cp(7);*/
+	 lcd_char_cp(7);*/ // log left
 
 
   /* USER CODE END 2 */
