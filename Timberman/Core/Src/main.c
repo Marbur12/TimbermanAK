@@ -158,16 +158,16 @@ void game() {
 			if (value > 700 && value < 820) { // move player to right
 				display[0][5] = 0;
 				display[1][5] = 7;
-				lcd_gotoxy(1, 14);
+				lcd_gotoxy(1, 15);
 				lcd_char_cp(display[0][5]);
-				lcd_gotoxy(1, 14);
+				lcd_gotoxy(2, 15);
 				lcd_char_cp(display[1][5]);
 			} else if (value > 1800 && value < 1920) { // move player to left
 				display[0][5] = 6;
 				display[1][5] = 1;
-				lcd_gotoxy(1, 14);
+				lcd_gotoxy(1, 15);
 				lcd_char_cp(display[0][5]);
-				lcd_gotoxy(1, 14);
+				lcd_gotoxy(2, 15);
 				lcd_char_cp(display[1][5]);
 			}
 
@@ -204,7 +204,7 @@ void game() {
 			 }
 
 			/* ====== DISPLAYING EVERYTHING ====== */
-			HAL_Delay(5000);
+			HAL_Delay(300);
 			if ((value > 700 && value < 820)
 					|| (value > 1800 && value < 1920)) {
 				lcd_clear();
@@ -221,9 +221,6 @@ void game() {
 				}
 			}
 		}
-
-
-		//HAL_Delay(300);
 	}
 	gameOver();
 }
