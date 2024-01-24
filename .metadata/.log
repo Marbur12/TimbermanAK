@@ -1402,3 +1402,31 @@ java.io.FileNotFoundException: C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\
 
 !ENTRY org.eclipse.cdt.dsf 4 10005 2024-01-20 00:26:45.049
 !MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.gdb.internal.ui.actions.DsfTerminateCommand$3$1@771f1555): Status OK: unknown code=0 OK' resulted in a rejected execution exception.
+!SESSION 2024-01-24 21:26:16.962 -----------------------------------------------
+eclipse.buildId=Version 1.13.2
+java.version=17.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-01-24 21:27:49.688
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-01-24 21:27:49.691
+!MESSAGE Log4j2 initialized with config file C:\nonSystem\IT\Code\STM32\TimbermanAK\.metadata\.log4j2.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-01-24 21:27:52.871
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\gmich'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-01-24 21:27:55.227
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-01-24 21:28:56.855
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/updates/release/latest, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-01-24 21:28:57.351
+!MESSAGE Using unsafe http transport to retrieve http://download.eclipse.org/usssdk/drops/release/1.2.2/content.xml.xz, see CVE-2021-41033. Consider using https instead.

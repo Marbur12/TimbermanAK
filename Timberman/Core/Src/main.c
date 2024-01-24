@@ -28,6 +28,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,7 +69,7 @@ static void MX_RTC_Init(void);
 
 // -------------------------------------------------------- Variables --------------------------------------------------------
 int score = 0;
-int highScore = 12;
+int highScore = 0;
 char scoreText[16] = "";
 RTC_TimeTypeDef newTime;
 RTC_TimeTypeDef time;
@@ -112,6 +113,12 @@ void menu() {
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Game ----------------------------------------------------------
 void game() {
+	int randomNumber;
+	int isAlive = true;
+
+	while(isAlive) {
+		randomNumber = rand() % 100;
+	}
 	lcd_clear();
 	while (1) {
 		lcd_print(1, 1, "Test");
