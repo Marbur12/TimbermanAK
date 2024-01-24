@@ -144,6 +144,19 @@ void game() {
 	while (isAlive) {
 
 		// pressing the button to chop the tree
+		HAL_Delay(50);
+		HAL_ADC_Start(&hadc1);
+		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
+			value = HAL_ADC_GetValue(&hadc1);
+
+			if (value > 700 && value < 820) { // move player to right
+				display[0][5] = 1;
+				display[1][5] = 0;
+			}
+			else if (value > 1800 && value < 1920) { // move player to left
+				display[0][5] = 0;
+				display[1][5] = 2;
+			}
 
 		randomNumber = rand() % 100;
 
@@ -169,9 +182,9 @@ void game() {
 		 else {
 		 display[0][0] = 6; // set right part of tree on height i to log
 		 display[1][0] = 5; // set left part of tree on height i to branch
-		 }
-
-		 /* ====== DISPLAYING EVERYTHING ====== */
+		 }*/
+		}
+		/* ====== DISPLAYING EVERYTHING ====== */
 		lcd_clear();
 		sprintf(scoreText, "%d", highScore);
 		lcd_print(1, 1, "SCORE:");
@@ -187,7 +200,7 @@ void game() {
 		/*lcd_print(1, 1, temp1);
 		 lcd_print(2, 1, temp2);*/
 
-		HAL_Delay(300);
+		//HAL_Delay(300);
 
 	}
 	//gameOver();
