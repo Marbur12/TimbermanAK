@@ -85,7 +85,13 @@ void menu() {
 	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
-
+	lcd_print(1, 4, "Timberman!");
+	if (display) {
+		lcd_print(2, startCol, scoreText);
+	} else if (!display) {
+		lcd_print(2, 2, "Start = PRESS");
+	}
+	HAL_Delay(1500);
 	do {
 		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
@@ -150,15 +156,15 @@ void game() {
 		}
 	}
 
-
-
 	/* ====== MAIN GAME LOOP ====== */
 	while (isAlive) {
 
+		HAL_Delay(50);
+
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 		HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
-		Milliseconds = ((currentTime.SubSeconds)/((float)currentTime.SecondFraction+1) * 100);
-		if (currentTime.Seconds > 1 && !canGo) {
+		//Milliseconds = ((currentTime.SubSeconds)/((float)currentTime.SecondFraction+1) * 100);
+		if (currentTime.Seconds > 0 && !canGo) {
 			canGo = true;
 			newTime = currentTime;
 			newTime.Seconds = 0;
@@ -167,12 +173,10 @@ void game() {
 			HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
 		}
 
-		HAL_Delay(50);
-		HAL_ADC_Start(&hadc1);
-		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
-			value = HAL_ADC_GetValue(&hadc1);
-
-			if (canGo) {
+		if (canGo) {
+			HAL_ADC_Start(&hadc1);
+			if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
+				value = HAL_ADC_GetValue(&hadc1);
 				canGo = false;
 				if (value > 700 && value < 820) { // move player to right
 					display[0][5] = 0;
@@ -193,9 +197,12 @@ void game() {
 				randomNumber = rand() % 100;
 
 				/* ====== LOOSING CONDITION ====== */
-				 if (display[0][5] == 0 && display[0][4] == 4) isAlive = false;
-				 else if (display[1][5] == 1 && display[1][4] == 5) isAlive = false;
-				 else score++;
+				if (display[0][5] == 0 && display[0][4] == 4)
+					isAlive = false;
+				else if (display[1][5] == 1 && display[1][4] == 5)
+					isAlive = false;
+				else
+					score++;
 				/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
 				if (display[0][5] == 0) {
 					display[0][5] = 2;
@@ -250,6 +257,13 @@ void gameOver() {
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
 
+	if (display) {
+		lcd_print(1, startCol, scoreText);
+	} else if (!display) {
+		lcd_print(1, 3, "Game Over :(");
+	}
+	lcd_print(2, 3, "Menu = PRESS");
+	HAL_Delay(1500);
 	do {
 		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
@@ -277,7 +291,8 @@ void gameOver() {
 		}
 	} while (value > 4000);
 
-	if (highScore < score) highScore = score;
+	if (highScore < score)
+		highScore = score;
 }
 // ----------------------------------------------------------------------------------------------------------------------------
 /* USER CODE END 0 */

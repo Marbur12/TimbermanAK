@@ -1,10 +1,10 @@
-01:18:33 **** Incremental Build of configuration Debug for project Timberman ****
+01:41:00 **** Incremental Build of configuration Debug for project Timberman ****
 make -j12 all 
 arm-none-eabi-size   Timberman.elf 
    text	   data	    bss	    dec	    hex	filename
-  26428	    112	   2128	  28668	   6ffc	Timberman.elf
+  26488	    112	   2120	  28720	   7030	Timberman.elf
 Finished building: default.size.stdout
  
 
-01:18:33 Build Finished. 0 errors, 0 warnings. (took 347ms)
+01:41:00 Build Finished. 0 errors, 0 warnings. (took 329ms)
 
