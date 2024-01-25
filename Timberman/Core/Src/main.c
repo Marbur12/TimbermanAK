@@ -76,6 +76,7 @@ char scoreText[16] = "";
 RTC_TimeTypeDef newTime;
 RTC_TimeTypeDef currentTime;
 RTC_DateTypeDef date;
+uint16_t Milliseconds;
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
@@ -118,8 +119,9 @@ void game() {
 	lcd_clear();
 	//srand(time(NULL));
 	int randomNumber;
-	int isAlive = true;
+	bool isAlive = true;
 	int display[2][6];
+	bool canGo = true;
 
 	/* ====== GENERATE TREE AT THE START ====== */
 	for (int i = 0; i < 5; i++) {
@@ -146,77 +148,92 @@ void game() {
 			lcd_char_cp(display[i][j]);
 		}
 	}
+
+
+
 	/* ====== MAIN GAME LOOP ====== */
 	while (isAlive) {
 
-		// pressing the button to chop the tree
+		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
+		HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
+		Milliseconds = ((currentTime.SubSeconds)/((float)currentTime.SecondFraction+1) * 100);
+		if (currentTime.Seconds > 1 && !canGo) {
+			canGo = true;
+			newTime = currentTime;
+			newTime.Seconds = 0;
+			newTime.SecondFraction = 0;
+			newTime.SubSeconds = 0;
+			HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
+		}
+
 		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
 
-			if (value > 700 && value < 820) { // move player to right
-				display[0][5] = 0;
-				display[1][5] = 7;
-				lcd_gotoxy(1, 15);
-				lcd_char_cp(display[0][5]);
-				lcd_gotoxy(2, 15);
-				lcd_char_cp(display[1][5]);
-			} else if (value > 1800 && value < 1920) { // move player to left
-				display[0][5] = 6;
-				display[1][5] = 1;
-				lcd_gotoxy(1, 15);
-				lcd_char_cp(display[0][5]);
-				lcd_gotoxy(2, 15);
-				lcd_char_cp(display[1][5]);
-			}
+			if (canGo) {
+				canGo = false;
+				if (value > 700 && value < 820) { // move player to right
+					display[0][5] = 0;
+					display[1][5] = 7;
+					lcd_gotoxy(1, 15);
+					lcd_char_cp(display[0][5]);
+					lcd_gotoxy(2, 15);
+					lcd_char_cp(display[1][5]);
+				} else if (value > 1800 && value < 1920) { // move player to left
+					display[0][5] = 6;
+					display[1][5] = 1;
+					lcd_gotoxy(1, 15);
+					lcd_char_cp(display[0][5]);
+					lcd_gotoxy(2, 15);
+					lcd_char_cp(display[1][5]);
+				}
 
-			randomNumber = rand() % 100;
+				randomNumber = rand() % 100;
 
-			/* ====== LOOSING CONDITION ====== *//*
-			 if (display[0][5] == 0 && display[0][4] == 4) isAlive = false;
-			 else if (display[1][5] == 1 && display[1][4] == 5) isAlive = false;*/
+				/* ====== LOOSING CONDITION ====== */
+				 if (display[0][5] == 0 && display[0][4] == 4) isAlive = false;
+				 else if (display[1][5] == 1 && display[1][4] == 5) isAlive = false;
 
-			 /* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
-			 if (display[0][5] == 0) {
-				 display[0][5] = 2;
-				 display[1][5] = display[1][4];
-			 }
-			 else if (display[1][5] == 1) {
-				 display[1][5] = 3;
-				 display[0][5] = display[0][4];
-			 }
+				/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
+				if (display[0][5] == 0) {
+					display[0][5] = 2;
+					display[1][5] = display[1][4];
+				} else if (display[1][5] == 1) {
+					display[1][5] = 3;
+					display[0][5] = display[0][4];
+				}
 
-			 /* ====== MOVING MIDDLE PART OF TREE DOWN ====== */
-			 for(int i = 4; i > 0; i--){
-			 display[0][i] = display[0][i-1]; // move right part of the tree down by 1
-			 display[1][i] = display[1][i-1]; // move left part of the tree down by 1
-			 }
+				/* ====== MOVING MIDDLE PART OF TREE DOWN ====== */
+				for (int i = 4; i > 0; i--) {
+					display[0][i] = display[0][i - 1]; // move right part of the tree down by 1
+					display[1][i] = display[1][i - 1]; // move left part of the tree down by 1
+				}
 
-			 /* ====== GENERATING TOP OF THE TREE ====== */
-			 if(randomNumber % 2 == 0) {
-			 display[0][0] = 4; // set right part of tree on height i to branch
-			 display[1][0] = 7; // set left part of tree on height i to log
-			 }
-			 else {
-			 display[0][0] = 6; // set right part of tree on height i to log
-			 display[1][0] = 5; // set left part of tree on height i to branch
-			 }
+				/* ====== GENERATING TOP OF THE TREE ====== */
+				if (randomNumber % 2 == 0) {
+					display[0][0] = 4; // set right part of tree on height i to branch
+					display[1][0] = 7; // set left part of tree on height i to log
+				} else {
+					display[0][0] = 6; // set right part of tree on height i to log
+					display[1][0] = 5; // set left part of tree on height i to branch
+				}
 
-			/* ====== DISPLAYING EVERYTHING ====== */
-			HAL_Delay(300);
-			if ((value > 700 && value < 820)
-					|| (value > 1800 && value < 1920)) {
-				lcd_clear();
-				sprintf(scoreText, "%d", score);
-				lcd_print(1, 1, "SCORE:");
-				lcd_print(2, 1, scoreText);
-				lcd_print(1, 16, "|");
-				lcd_print(2, 16, "|");
-				for (int i = 0; i < 2; i++) {
-					for (int j = 0; j < 6; j++) {
-						lcd_gotoxy(i + 1, j + 10);
-						lcd_char_cp(display[i][j]);
+				/* ====== DISPLAYING EVERYTHING ====== */
+				HAL_Delay(300);
+				if ((value > 700 && value < 820)
+						|| (value > 1800 && value < 1920)) {
+					lcd_clear();
+					sprintf(scoreText, "%d", score);
+					lcd_print(1, 1, "SCORE:");
+					lcd_print(2, 1, scoreText);
+					lcd_print(1, 16, "|");
+					lcd_print(2, 16, "|");
+					for (int i = 0; i < 2; i++) {
+						for (int j = 0; j < 6; j++) {
+							lcd_gotoxy(i + 1, j + 10);
+							lcd_char_cp(display[i][j]);
+						}
 					}
 				}
 			}
