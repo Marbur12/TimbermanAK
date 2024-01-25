@@ -117,7 +117,8 @@ void menu() {
 // ----------------------------------------------------------- Game ----------------------------------------------------------
 void game() {
 	lcd_clear();
-	//srand(time(NULL));
+
+	score = 0;
 	int randomNumber;
 	bool isAlive = true;
 	int display[2][6];
@@ -194,7 +195,7 @@ void game() {
 				/* ====== LOOSING CONDITION ====== */
 				 if (display[0][5] == 0 && display[0][4] == 4) isAlive = false;
 				 else if (display[1][5] == 1 && display[1][4] == 5) isAlive = false;
-
+				 else score++;
 				/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
 				if (display[0][5] == 0) {
 					display[0][5] = 2;
@@ -275,6 +276,8 @@ void gameOver() {
 			lcd_print(2, 3, "Menu = PRESS");
 		}
 	} while (value > 4000);
+
+	if (highScore < score) highScore = score;
 }
 // ----------------------------------------------------------------------------------------------------------------------------
 /* USER CODE END 0 */

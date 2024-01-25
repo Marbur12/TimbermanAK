@@ -1,9 +1,9 @@
 ../Core/Src/main.c:82:6:menu	6
 ../Core/Src/main.c:118:6:game	28
-../Core/Src/main.c:246:6:gameOver	6
-../Core/Src/main.c:287:5:main	9
-../Core/Src/main.c:407:6:SystemClock_Config	4
-../Core/Src/main.c:457:13:MX_ADC1_Init	4
-../Core/Src/main.c:520:13:MX_RTC_Init	5
-../Core/Src/main.c:599:13:MX_GPIO_Init	1
-../Core/Src/main.c:662:6:Error_Handler	1
+../Core/Src/main.c:246:6:gameOver	7
+../Core/Src/main.c:289:5:main	9
+../Core/Src/main.c:404:6:SystemClock_Config	4
+../Core/Src/main.c:454:13:MX_ADC1_Init	4
+../Core/Src/main.c:517:13:MX_RTC_Init	5
+../Core/Src/main.c:596:13:MX_GPIO_Init	1
+../Core/Src/main.c:659:6:Error_Handler	1
