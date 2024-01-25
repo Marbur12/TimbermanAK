@@ -239,7 +239,6 @@ void game() {
 			}
 		}
 	}
-	gameOver();
 }
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
@@ -384,18 +383,13 @@ int main(void) {
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
-	//menu();
-	//gameOver();
-	/*lcd_clear();
-	 lcd_print(1, 1, "HelloTest123");*/
 	while (1) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		//menu();
+		menu();
 		game();
-		//gameOver();
-		//lcd_print(2, 1, "HelloTest123");
+		gameOver();
 	}
 	/* USER CODE END 3 */
 }
