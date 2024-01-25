@@ -194,8 +194,8 @@ void game() {
 					lcd_char_cp(display[1][5]);
 				}
 
-				randomNumber = rand() % 100;
-
+				if ((value > 700 && value < 820)
+										|| (value > 1800 && value < 1920)) {
 				/* ====== LOOSING CONDITION ====== */
 				if (display[0][5] == 0 && display[0][4] == 4)
 					isAlive = false;
@@ -219,6 +219,7 @@ void game() {
 				}
 
 				/* ====== GENERATING TOP OF THE TREE ====== */
+				randomNumber = rand() % 100;
 				if (randomNumber % 2 == 0) {
 					display[0][0] = 4; // set right part of tree on height i to branch
 					display[1][0] = 7; // set left part of tree on height i to log
@@ -229,8 +230,7 @@ void game() {
 
 				/* ====== DISPLAYING EVERYTHING ====== */
 				HAL_Delay(300);
-				if ((value > 700 && value < 820)
-						|| (value > 1800 && value < 1920)) {
+
 					lcd_clear();
 					sprintf(scoreText, "%d", score);
 					lcd_print(1, 1, "SCORE:");

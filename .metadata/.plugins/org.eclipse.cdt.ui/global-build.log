@@ -124,3 +124,129 @@ arm-none-eabi-size   Timberman.elf
   26488	    112	   2120	  28720	   7030	Timberman.elf
 Finished building: default.size.stdout
  
+01:45:08 **** Incremental Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14184	     20	   1668	  15872	   3e00	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+01:45:21 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+01:47:27 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+01:47:45 **** Incremental Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14184	     20	   1668	  15872	   3e00	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+01:48:05 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+01:48:20 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+01:48:35 **** Incremental Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14184	     20	   1668	  15872	   3e00	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+01:48:45 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+01:49:07 **** Incremental Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14184	     20	   1668	  15872	   3e00	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+01:49:22 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+01:51:12 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  26488	    112	   2120	  28720	   7030	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+01:52:23 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  26492	    112	   2120	  28724	   7034	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 
+01:52:39 **** Incremental Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14184	     20	   1668	  15872	   3e00	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+01:52:51 **** Incremental Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-size   Timberman.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26492	    112	   2120	  28724	   7034	Timberman.elf
+Finished building: default.size.stdout
+ 
