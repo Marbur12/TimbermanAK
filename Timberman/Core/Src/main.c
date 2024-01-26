@@ -126,8 +126,8 @@ void game() {
 
 	score = 0;
 	int randomNumber;
-	bool isAlive = true;
 	int display[2][6];
+	bool isAlive = true;
 	bool canGo = true;
 
 	/* ====== GENERATE TREE AT THE START ====== */
@@ -144,6 +144,7 @@ void game() {
 	display[0][5] = 2; // set right part of tree at the bottom to right man
 	display[1][5] = 7; // set left part of tree at the bottom to log
 
+	/* ====== DISPLAY STATIC CHARACTERS ====== */
 	sprintf(scoreText, "%d", score);
 	lcd_print(1, 1, "SCORE:");
 	lcd_print(2, 1, scoreText);
@@ -179,17 +180,15 @@ void game() {
 				value = HAL_ADC_GetValue(&hadc1);
 				canGo = false;
 
-				/* ====== MOVE PLAYER TO THE RIGHT ====== */
-				if (value > 700 && value < 820) {
+				/* ====== MOVE PLAYER TO THE SIDE ====== */
+				if (value > 700 && value < 820) { // move player to the right
 					display[0][5] = 0;
 					display[1][5] = 7;
 					lcd_gotoxy(1, 15);
 					lcd_char_cp(display[0][5]);
 					lcd_gotoxy(2, 15);
 					lcd_char_cp(display[1][5]);
-				}
-				/* ====== MOVE PLAYER TO THE LEFT ====== */
-				else if (value > 1800 && value < 1920) {
+				} else if (value > 1800 && value < 1920) { // move player to the left
 					display[0][5] = 6;
 					display[1][5] = 1;
 					lcd_gotoxy(1, 15);
