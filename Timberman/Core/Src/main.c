@@ -373,8 +373,8 @@ int main(void) {
 
 	lcd_cmd(0x80);
 	// ---------------------------------------------------------------------------------------------------------------------------------------
-
-	/*lcd_gotoxy(1, 1);
+	/*
+	 lcd_gotoxy(1, 1);
 	 lcd_char_cp(0); // right man hit
 
 	 lcd_gotoxy(2, 1);
@@ -396,11 +396,15 @@ int main(void) {
 	 lcd_char_cp(6); // log right
 
 	 lcd_gotoxy(2, 4);
-	 lcd_char_cp(7);*/// log left
+	 lcd_char_cp(7); // log left
+	*/
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
 	/* USER CODE BEGIN WHILE */
+
+	//lcd_print(1, 1, "Test line 1");
+	//lcd_print(2, 1, "Test line 2");
 	while (1) {
 		/* USER CODE END WHILE */
 
@@ -408,11 +412,6 @@ int main(void) {
 		menu();
 		game();
 		gameOver();
-		//lcd_print(1, 1, "Hello World");
-		//    	lcd_print(2, 1, "TEST 123");
-
-//		    	HAL_Delay(300);
-	//	    	lcd_clear();
 	}
 	/* USER CODE END 3 */
 }
