@@ -158,8 +158,8 @@ void game() {
 
 	/* ====== MAIN GAME LOOP ====== */
 	while (isAlive) {
-
 		HAL_Delay(50);
+
 		/* ====== ALLOWING TO CHOP THE TREE AFTER 1 SECOND ====== */
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 		HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
@@ -178,6 +178,7 @@ void game() {
 			if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 				value = HAL_ADC_GetValue(&hadc1);
 				canGo = false;
+
 				/* ====== MOVE PLAYER TO THE RIGHT ====== */
 				if (value > 700 && value < 820) {
 					display[0][5] = 0;
@@ -206,7 +207,7 @@ void game() {
 						isAlive = false;
 					else
 						score++;
-					/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
+					/* ====== MOVING BOTTOM PART OF THE TREE DOWN ====== */
 					if (display[0][5] == 0) {
 						display[0][5] = 2;
 						display[1][5] = display[1][4];
