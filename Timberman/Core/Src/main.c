@@ -408,6 +408,11 @@ int main(void) {
 		menu();
 		game();
 		gameOver();
+		//lcd_print(1, 1, "Hello World");
+		//    	lcd_print(2, 1, "TEST 123");
+
+//		    	HAL_Delay(300);
+	//	    	lcd_clear();
 	}
 	/* USER CODE END 3 */
 }
