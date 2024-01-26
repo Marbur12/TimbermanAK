@@ -160,10 +160,9 @@ void game() {
 	while (isAlive) {
 
 		HAL_Delay(50);
-
+		/* ====== ALLOWING TO CHOP THE TREE AFTER 1 SECOND ====== */
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 		HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
-		//Milliseconds = ((currentTime.SubSeconds)/((float)currentTime.SecondFraction+1) * 100);
 		if (currentTime.Seconds > 0 && !canGo) {
 			canGo = true;
 			newTime = currentTime;
@@ -173,19 +172,23 @@ void game() {
 			HAL_RTC_SetTime(&hrtc, &newTime, RTC_FORMAT_BIN);
 		}
 
+		/* ====== CHOPING THE TREE IF ALLOWED ====== */
 		if (canGo) {
 			HAL_ADC_Start(&hadc1);
 			if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 				value = HAL_ADC_GetValue(&hadc1);
 				canGo = false;
-				if (value > 700 && value < 820) { // move player to right
+				/* ====== MOVE PLAYER TO THE RIGHT ====== */
+				if (value > 700 && value < 820) {
 					display[0][5] = 0;
 					display[1][5] = 7;
 					lcd_gotoxy(1, 15);
 					lcd_char_cp(display[0][5]);
 					lcd_gotoxy(2, 15);
 					lcd_char_cp(display[1][5]);
-				} else if (value > 1800 && value < 1920) { // move player to left
+				}
+				/* ====== MOVE PLAYER TO THE LEFT ====== */
+				else if (value > 1800 && value < 1920) {
 					display[0][5] = 6;
 					display[1][5] = 1;
 					lcd_gotoxy(1, 15);
@@ -264,6 +267,7 @@ void gameOver() {
 	}
 	lcd_print(2, 3, "Menu = PRESS");
 	HAL_Delay(1500);
+
 	do {
 		HAL_Delay(50);
 		HAL_ADC_Start(&hadc1);
