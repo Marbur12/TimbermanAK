@@ -82,9 +82,11 @@ uint16_t Milliseconds;
 void menu() {
 	lcd_clear();
 
-	sprintf(scoreText, "HScore = %d", highScore);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
+
+	/* ====== INITIAL DISPLAY ====== */
+	sprintf(scoreText, "HScore = %d", highScore);
 	lcd_print(1, 4, "Timberman!");
 	if (display) {
 		lcd_print(2, startCol, scoreText);
@@ -92,12 +94,16 @@ void menu() {
 		lcd_print(2, 2, "Start = PRESS");
 	}
 	HAL_Delay(1500);
+
 	do {
 		HAL_Delay(50);
+
+		/* ====== CHECKING IF BUTTON WAS PRESSED ====== */
 		HAL_ADC_Start(&hadc1);
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
 
+			/* ====== CHECKING IF IT IS TIMER TO CHANGE TEXT ====== */
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 			HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
 			if (currentTime.Seconds > 2) {
@@ -110,6 +116,7 @@ void menu() {
 				lcd_clear();
 			}
 
+			/* ====== DISPLAYIN TEXT ====== */
 			lcd_print(1, 4, "Timberman!");
 			if (display) {
 				lcd_print(2, startCol, scoreText);
@@ -256,10 +263,11 @@ void game() {
 void gameOver() {
 	lcd_clear();
 
-	sprintf(scoreText, "Score = %d", score);
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
 	bool display = true;
 
+	/* ====== INITIAL DISPLAY ====== */
+	sprintf(scoreText, "Score = %d", score);
 	if (display) {
 		lcd_print(1, startCol, scoreText);
 	} else if (!display) {
@@ -270,10 +278,13 @@ void gameOver() {
 
 	do {
 		HAL_Delay(50);
+
+		/* ====== CHECKING IF BUTTON WAS PRESSED ====== */
 		HAL_ADC_Start(&hadc1);
 		if (HAL_ADC_PollForConversion(&hadc1, 10) == HAL_OK) {
 			value = HAL_ADC_GetValue(&hadc1);
 
+			/* ====== CHECKING IF IT IS TIMER TO CHANGE TEXT ====== */
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
 			HAL_RTC_GetTime(&hrtc, &currentTime, RTC_FORMAT_BIN);
 			if (currentTime.Seconds > 2) {
@@ -286,6 +297,7 @@ void gameOver() {
 				lcd_clear();
 			}
 
+			/* ====== DISPLAYIN TEXT ====== */
 			if (display) {
 				lcd_print(1, startCol, scoreText);
 			} else if (!display) {
@@ -295,6 +307,7 @@ void gameOver() {
 		}
 	} while (value > 4000);
 
+	/* ====== UPDATE HIGHSCORE IF NEEDED ====== */
 	if (highScore < score)
 		highScore = score;
 }
