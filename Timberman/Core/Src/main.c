@@ -255,8 +255,7 @@ void game() {
 				}
 			}
 		}
-	}
-}
+	}}
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------- Game over screen ----------------------------------------------------
 void gameOver() {
@@ -363,30 +362,21 @@ int main(void) {
 	/* USER CODE BEGIN 2 */
 	// ------------------------------------------------ Assigning custom characters to memory ------------------------------------------------
 	lcd_cmd(0x40);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(rightManHit[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(rightManHit[i]);
 	lcd_cmd(0x40 + 8);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(leftManHit[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(leftManHit[i]);
 	lcd_cmd(0x40 + 16);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(rightMan[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(rightMan[i]);
 	lcd_cmd(0x40 + 24);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(leftMan[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(leftMan[i]);
 	lcd_cmd(0x40 + 32);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(branchRight[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(branchRight[i]);
 	lcd_cmd(0x40 + 40);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(branchLeft[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(branchLeft[i]);
 	lcd_cmd(0x40 + 48);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(logRight[i]);
+	for (int i = 0; i < 8; i++) lcd_char_cp(logRight[i]);
 	lcd_cmd(0x40 + 56);
-	for (int i = 0; i < 8; i++)
-		lcd_char_cp(logLeft[i]);
-
+	for (int i = 0; i < 8; i++) lcd_char_cp(logLeft[i]);
 	lcd_cmd(0x80);
 	// ---------------------------------------------------------------------------------------------------------------------------------------
 	/*

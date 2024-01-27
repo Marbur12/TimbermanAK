@@ -286,3 +286,70 @@ arm-none-eabi-size   Timberman.elf
   26492	    112	   2120	  28724	   7034	Timberman.elf
 Finished building: default.size.stdout
  
+11:15:23 **** Build of configuration Debug for project MiGrochowski_RTC ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:103:5: warning: implicit declaration of function 'lcd_init' [-Wimplicit-function-declaration]
+  103 |     lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+      |     ^~~~~~~~
+../Core/Src/main.c:103:14: error: '_LCD_4BIT' undeclared (first use in this function)
+  103 |     lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+      |              ^~~~~~~~~
+../Core/Src/main.c:103:14: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:103:25: error: '_LCD_FONT_5x8' undeclared (first use in this function)
+  103 |     lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+      |                         ^~~~~~~~~~~~~
+../Core/Src/main.c:103:40: error: '_LCD_2LINE' undeclared (first use in this function)
+  103 |     lcd_init(_LCD_4BIT, _LCD_FONT_5x8, _LCD_2LINE);
+      |                                        ^~~~~~~~~~
+../Core/Src/main.c:129:9: warning: implicit declaration of function 'lcd_print' [-Wimplicit-function-declaration]
+  129 |         lcd_print(1, 1, "Hello World");
+      |         ^~~~~~~~~
+../Core/Src/main.c:133:9: warning: implicit declaration of function 'lcd_clear' [-Wimplicit-function-declaration]
+  133 |         lcd_clear();
+      |         ^~~~~~~~~
+../Core/Src/main.c:266:1: warning: "/*" within comment [-Wcomment]
+  266 | /*
+      |  
+../Core/Src/main.c:112:9: warning: unused variable 'isGoing' [-Wunused-variable]
+  112 |     int isGoing = 1;
+      |         ^~~~~~~
+../Core/Src/main.c:110:10: warning: unused variable 'string' [-Wunused-variable]
+  110 |     char string[16];
+      |          ^~~~~~
+../Core/Src/main.c:108:21: warning: unused variable 'date' [-Wunused-variable]
+  108 |     RTC_DateTypeDef date;
+      |                     ^~~~
+../Core/Src/main.c:107:21: warning: unused variable 'state' [-Wunused-variable]
+  107 |     RTC_TimeTypeDef state;
+      |                     ^~~~~
+../Core/Src/main.c:106:21: warning: unused variable 'new_time' [-Wunused-variable]
+  106 |     RTC_TimeTypeDef new_time;
+      |                     ^~~~~~~~
+../Core/Src/main.c:105:21: warning: unused variable 'time' [-Wunused-variable]
+  105 |     RTC_TimeTypeDef time;
+      |                     ^~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+11:15:26 **** Build of configuration Debug for project MiGrochowski_LCDADC ****
+make -j12 all 
+arm-none-eabi-size   MiGrochowski_LCDADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14148	     20	   1668	  15836	   3ddc	MiGrochowski_LCDADC.elf
+Finished building: default.size.stdout
+ 
+11:15:39 **** Build of configuration Debug for project Timberman ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L476xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Timberman.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\nonSystem\IT\Code\STM32\TimbermanAK\Timberman\STM32L476RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timberman.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Timberman.elf
+ 
+arm-none-eabi-size   Timberman.elf 
+arm-none-eabi-objdump -h -S  Timberman.elf  > "Timberman.list"
+   text	   data	    bss	    dec	    hex	filename
+  26492	    112	   2120	  28724	   7034	Timberman.elf
+Finished building: default.size.stdout
+ 
+Finished building: Timberman.list
+ 

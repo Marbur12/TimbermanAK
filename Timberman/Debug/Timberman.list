@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  12 .comment      00000043  00000000  00000000  00020098  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000d3d2  00000000  00000000  000200db  2**0
+ 13 .debug_info   0000d3c4  00000000  00000000  000200db  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 0000231a  00000000  00000000  0002d4ad  2**0
+ 14 .debug_abbrev 00002333  00000000  00000000  0002d49f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000d00  00000000  00000000  0002f7c8  2**3
+ 15 .debug_aranges 00000d00  00000000  00000000  0002f7d8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_rnglists 000009c4  00000000  00000000  000304c8  2**0
+ 16 .debug_rnglists 000009c4  00000000  00000000  000304d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  000291ed  00000000  00000000  00030e8c  2**0
+ 17 .debug_macro  000291ed  00000000  00000000  00030e9c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000ea77  00000000  00000000  0005a079  2**0
+ 18 .debug_line   0000ea77  00000000  00000000  0005a089  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000fe604  00000000  00000000  00068af0  2**0
+ 19 .debug_str    000fe5f7  00000000  00000000  00068b00  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  00003f84  00000000  00000000  001670f4  2**2
+ 20 .debug_frame  00003f84  00000000  00000000  001670f8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000005f  00000000  00000000  0016b078  2**0
+ 21 .debug_line_str 0000005f  00000000  00000000  0016b07c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -832,9 +832,9 @@ void lcd_clear(void) {
 	...
 
 08000744 <menu>:
+RTC_TimeTypeDef newTime;
 RTC_TimeTypeDef currentTime;
 RTC_DateTypeDef date;
-uint16_t Milliseconds;
 // ---------------------------------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------- Menu ----------------------------------------------------------
 void menu() {
@@ -844,24 +844,26 @@ void menu() {
 	lcd_clear();
  800074a:	f7ff fff0 	bl	800072e <lcd_clear>
 
-	sprintf(scoreText, "HScore = %d", highScore);
- 800074e:	4b4f      	ldr	r3, [pc, #316]	; (800088c <menu+0x148>)
- 8000750:	681b      	ldr	r3, [r3, #0]
- 8000752:	461a      	mov	r2, r3
- 8000754:	494e      	ldr	r1, [pc, #312]	; (8000890 <menu+0x14c>)
- 8000756:	484f      	ldr	r0, [pc, #316]	; (8000894 <menu+0x150>)
- 8000758:	f004 fe68 	bl	800542c <siprintf>
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
- 800075c:	484d      	ldr	r0, [pc, #308]	; (8000894 <menu+0x150>)
- 800075e:	f7ff fd37 	bl	80001d0 <strlen>
- 8000762:	4603      	mov	r3, r0
- 8000764:	f1c3 0310 	rsb	r3, r3, #16
- 8000768:	085b      	lsrs	r3, r3, #1
- 800076a:	3301      	adds	r3, #1
- 800076c:	603b      	str	r3, [r7, #0]
+ 800074e:	484f      	ldr	r0, [pc, #316]	; (800088c <menu+0x148>)
+ 8000750:	f7ff fd3e 	bl	80001d0 <strlen>
+ 8000754:	4603      	mov	r3, r0
+ 8000756:	f1c3 0310 	rsb	r3, r3, #16
+ 800075a:	085b      	lsrs	r3, r3, #1
+ 800075c:	3301      	adds	r3, #1
+ 800075e:	603b      	str	r3, [r7, #0]
 	bool display = true;
- 800076e:	2301      	movs	r3, #1
- 8000770:	71fb      	strb	r3, [r7, #7]
+ 8000760:	2301      	movs	r3, #1
+ 8000762:	71fb      	strb	r3, [r7, #7]
+
+	/* ====== INITIAL DISPLAY ====== */
+	sprintf(scoreText, "HScore = %d", highScore);
+ 8000764:	4b4a      	ldr	r3, [pc, #296]	; (8000890 <menu+0x14c>)
+ 8000766:	681b      	ldr	r3, [r3, #0]
+ 8000768:	461a      	mov	r2, r3
+ 800076a:	494a      	ldr	r1, [pc, #296]	; (8000894 <menu+0x150>)
+ 800076c:	4847      	ldr	r0, [pc, #284]	; (800088c <menu+0x148>)
+ 800076e:	f004 fe5d 	bl	800542c <siprintf>
 	lcd_print(1, 4, "Timberman!");
  8000772:	4a49      	ldr	r2, [pc, #292]	; (8000898 <menu+0x154>)
  8000774:	2104      	movs	r1, #4
@@ -874,7 +876,7 @@ void menu() {
 		lcd_print(2, startCol, scoreText);
  8000782:	683b      	ldr	r3, [r7, #0]
  8000784:	b2db      	uxtb	r3, r3
- 8000786:	4a43      	ldr	r2, [pc, #268]	; (8000894 <menu+0x150>)
+ 8000786:	4a41      	ldr	r2, [pc, #260]	; (800088c <menu+0x148>)
  8000788:	4619      	mov	r1, r3
  800078a:	2002      	movs	r0, #2
  800078c:	f7ff ffb7 	bl	80006fe <lcd_print>
@@ -894,10 +896,13 @@ void menu() {
 	HAL_Delay(1500);
  80007a8:	f240 50dc 	movw	r0, #1500	; 0x5dc
  80007ac:	f001 f8c6 	bl	800193c <HAL_Delay>
+
 	do {
 		HAL_Delay(50);
  80007b0:	2032      	movs	r0, #50	; 0x32
  80007b2:	f001 f8c3 	bl	800193c <HAL_Delay>
+
+		/* ====== CHECKING IF BUTTON WAS PRESSED ====== */
 		HAL_ADC_Start(&hadc1);
  80007b6:	483a      	ldr	r0, [pc, #232]	; (80008a0 <menu+0x15c>)
  80007b8:	f001 fc18 	bl	8001fec <HAL_ADC_Start>
@@ -916,6 +921,7 @@ void menu() {
  80007d4:	4b33      	ldr	r3, [pc, #204]	; (80008a4 <menu+0x160>)
  80007d6:	801a      	strh	r2, [r3, #0]
 
+			/* ====== CHECKING IF IT IS TIMER TO CHANGE TEXT ====== */
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
  80007d8:	2200      	movs	r2, #0
  80007da:	4933      	ldr	r1, [pc, #204]	; (80008a8 <menu+0x164>)
@@ -974,6 +980,7 @@ void menu() {
  800083c:	f7ff ff77 	bl	800072e <lcd_clear>
 			}
 
+			/* ====== DISPLAYIN TEXT ====== */
 			lcd_print(1, 4, "Timberman!");
  8000840:	4a15      	ldr	r2, [pc, #84]	; (8000898 <menu+0x154>)
  8000842:	2104      	movs	r1, #4
@@ -986,7 +993,7 @@ void menu() {
 				lcd_print(2, startCol, scoreText);
  8000850:	683b      	ldr	r3, [r7, #0]
  8000852:	b2db      	uxtb	r3, r3
- 8000854:	4a0f      	ldr	r2, [pc, #60]	; (8000894 <menu+0x150>)
+ 8000854:	4a0d      	ldr	r2, [pc, #52]	; (800088c <menu+0x148>)
  8000856:	4619      	mov	r1, r3
  8000858:	2002      	movs	r0, #2
  800085a:	f7ff ff50 	bl	80006fe <lcd_print>
@@ -1016,9 +1023,9 @@ void menu() {
  8000886:	46bd      	mov	sp, r7
  8000888:	bdb0      	pop	{r4, r5, r7, pc}
  800088a:	bf00      	nop
- 800088c:	2000011c 	.word	0x2000011c
- 8000890:	080065c0 	.word	0x080065c0
- 8000894:	20000120 	.word	0x20000120
+ 800088c:	20000120 	.word	0x20000120
+ 8000890:	2000011c 	.word	0x2000011c
+ 8000894:	080065c0 	.word	0x080065c0
  8000898:	080065cc 	.word	0x080065cc
  800089c:	080065d8 	.word	0x080065d8
  80008a0:	2000008c 	.word	0x2000008c
@@ -1043,10 +1050,10 @@ void game() {
  80008c4:	2200      	movs	r2, #0
  80008c6:	601a      	str	r2, [r3, #0]
 	int randomNumber;
+	int display[2][6];
 	bool isAlive = true;
  80008c8:	2301      	movs	r3, #1
  80008ca:	f887 304f 	strb.w	r3, [r7, #79]	; 0x4f
-	int display[2][6];
 	bool canGo = true;
  80008ce:	2301      	movs	r3, #1
  80008d0:	f887 304e 	strb.w	r3, [r7, #78]	; 0x4e
@@ -1121,6 +1128,7 @@ void game() {
  800094e:	2307      	movs	r3, #7
  8000950:	62fb      	str	r3, [r7, #44]	; 0x2c
 
+	/* ====== DISPLAY STATIC CHARACTERS ====== */
 	sprintf(scoreText, "%d", score);
  8000952:	4b86      	ldr	r3, [pc, #536]	; (8000b6c <game+0x2b4>)
  8000954:	681b      	ldr	r3, [r3, #0]
@@ -1203,11 +1211,11 @@ void game() {
 	/* ====== MAIN GAME LOOP ====== */
 	while (isAlive) {
  80009e4:	e171      	b.n	8000cca <game+0x412>
-
 		HAL_Delay(50);
  80009e6:	2032      	movs	r0, #50	; 0x32
  80009e8:	f000 ffa8 	bl	800193c <HAL_Delay>
 
+		/* ====== ALLOWING TO CHOP THE TREE AFTER 1 SECOND ====== */
 		HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
  80009ec:	2200      	movs	r2, #0
  80009ee:	4965      	ldr	r1, [pc, #404]	; (8000b84 <game+0x2cc>)
@@ -1218,7 +1226,6 @@ void game() {
  80009f8:	4964      	ldr	r1, [pc, #400]	; (8000b8c <game+0x2d4>)
  80009fa:	4863      	ldr	r0, [pc, #396]	; (8000b88 <game+0x2d0>)
  80009fc:	f004 f8e9 	bl	8004bd2 <HAL_RTC_GetTime>
-		//Milliseconds = ((currentTime.SubSeconds)/((float)currentTime.SecondFraction+1) * 100);
 		if (currentTime.Seconds > 0 && !canGo) {
  8000a00:	4b62      	ldr	r3, [pc, #392]	; (8000b8c <game+0x2d4>)
  8000a02:	789b      	ldrb	r3, [r3, #2]
@@ -1260,6 +1267,7 @@ void game() {
  8000a44:	f004 f828 	bl	8004a98 <HAL_RTC_SetTime>
 		}
 
+		/* ====== CHOPING THE TREE IF ALLOWED ====== */
 		if (canGo) {
  8000a48:	f897 304e 	ldrb.w	r3, [r7, #78]	; 0x4e
  8000a4c:	2b00      	cmp	r3, #0
@@ -1284,7 +1292,9 @@ void game() {
 				canGo = false;
  8000a76:	2300      	movs	r3, #0
  8000a78:	f887 304e 	strb.w	r3, [r7, #78]	; 0x4e
-				if (value > 700 && value < 820) { // move player to right
+
+				/* ====== MOVE PLAYER TO THE SIDE ====== */
+				if (value > 700 && value < 820) { // move player to the right
  8000a7c:	4b46      	ldr	r3, [pc, #280]	; (8000b98 <game+0x2e0>)
  8000a7e:	881b      	ldrh	r3, [r3, #0]
  8000a80:	f5b3 7f2f 	cmp.w	r3, #700	; 0x2bc
@@ -1318,7 +1328,7 @@ void game() {
  8000ab6:	4618      	mov	r0, r3
  8000ab8:	f7ff fcdc 	bl	8000474 <lcd_char_cp>
  8000abc:	e01f      	b.n	8000afe <game+0x246>
-				} else if (value > 1800 && value < 1920) { // move player to left
+				} else if (value > 1800 && value < 1920) { // move player to the left
  8000abe:	4b36      	ldr	r3, [pc, #216]	; (8000b98 <game+0x2e0>)
  8000ac0:	881b      	ldrh	r3, [r3, #0]
  8000ac2:	f5b3 6fe1 	cmp.w	r3, #1800	; 0x708
@@ -1362,7 +1372,7 @@ void game() {
  8000b0a:	881b      	ldrh	r3, [r3, #0]
  8000b0c:	f5b3 7f4d 	cmp.w	r3, #820	; 0x334
  8000b10:	d30b      	bcc.n	8000b2a <game+0x272>
-										|| (value > 1800 && value < 1920)) {
+						|| (value > 1800 && value < 1920)) {
  8000b12:	4b21      	ldr	r3, [pc, #132]	; (8000b98 <game+0x2e0>)
  8000b14:	881b      	ldrh	r3, [r3, #0]
  8000b16:	f5b3 6fe1 	cmp.w	r3, #1800	; 0x708
@@ -1371,45 +1381,45 @@ void game() {
  8000b20:	881b      	ldrh	r3, [r3, #0]
  8000b22:	f5b3 6ff0 	cmp.w	r3, #1920	; 0x780
  8000b26:	f080 80d0 	bcs.w	8000cca <game+0x412>
-				/* ====== LOOSING CONDITION ====== */
-				if (display[0][5] == 0 && display[0][4] == 4)
+					/* ====== LOOSING CONDITION ====== */
+					if (display[0][5] == 0 && display[0][4] == 4)
  8000b2a:	697b      	ldr	r3, [r7, #20]
  8000b2c:	2b00      	cmp	r3, #0
  8000b2e:	d106      	bne.n	8000b3e <game+0x286>
  8000b30:	693b      	ldr	r3, [r7, #16]
  8000b32:	2b04      	cmp	r3, #4
  8000b34:	d103      	bne.n	8000b3e <game+0x286>
-					isAlive = false;
+						isAlive = false;
  8000b36:	2300      	movs	r3, #0
  8000b38:	f887 304f 	strb.w	r3, [r7, #79]	; 0x4f
  8000b3c:	e00e      	b.n	8000b5c <game+0x2a4>
-				else if (display[1][5] == 1 && display[1][4] == 5)
+					else if (display[1][5] == 1 && display[1][4] == 5)
  8000b3e:	6afb      	ldr	r3, [r7, #44]	; 0x2c
  8000b40:	2b01      	cmp	r3, #1
  8000b42:	d106      	bne.n	8000b52 <game+0x29a>
  8000b44:	6abb      	ldr	r3, [r7, #40]	; 0x28
  8000b46:	2b05      	cmp	r3, #5
  8000b48:	d103      	bne.n	8000b52 <game+0x29a>
-					isAlive = false;
+						isAlive = false;
  8000b4a:	2300      	movs	r3, #0
  8000b4c:	f887 304f 	strb.w	r3, [r7, #79]	; 0x4f
  8000b50:	e004      	b.n	8000b5c <game+0x2a4>
-				else
-					score++;
+					else
+						score++;
  8000b52:	4b06      	ldr	r3, [pc, #24]	; (8000b6c <game+0x2b4>)
  8000b54:	681b      	ldr	r3, [r3, #0]
  8000b56:	3301      	adds	r3, #1
  8000b58:	4a04      	ldr	r2, [pc, #16]	; (8000b6c <game+0x2b4>)
  8000b5a:	6013      	str	r3, [r2, #0]
-				/* ====== MOVING BOTTOM PART OF TREE DOWN ====== */
-				if (display[0][5] == 0) {
+					/* ====== MOVING BOTTOM PART OF THE TREE DOWN ====== */
+					if (display[0][5] == 0) {
  8000b5c:	697b      	ldr	r3, [r7, #20]
  8000b5e:	2b00      	cmp	r3, #0
  8000b60:	d11c      	bne.n	8000b9c <game+0x2e4>
-					display[0][5] = 2;
+						display[0][5] = 2;
  8000b62:	2302      	movs	r3, #2
  8000b64:	617b      	str	r3, [r7, #20]
-					display[1][5] = display[1][4];
+						display[1][5] = display[1][4];
  8000b66:	6abb      	ldr	r3, [r7, #40]	; 0x28
  8000b68:	62fb      	str	r3, [r7, #44]	; 0x2c
  8000b6a:	e01e      	b.n	8000baa <game+0x2f2>
@@ -1425,24 +1435,24 @@ void game() {
  8000b90:	20000130 	.word	0x20000130
  8000b94:	2000008c 	.word	0x2000008c
  8000b98:	20000114 	.word	0x20000114
-				} else if (display[1][5] == 1) {
+					} else if (display[1][5] == 1) {
  8000b9c:	6afb      	ldr	r3, [r7, #44]	; 0x2c
  8000b9e:	2b01      	cmp	r3, #1
  8000ba0:	d103      	bne.n	8000baa <game+0x2f2>
-					display[1][5] = 3;
+						display[1][5] = 3;
  8000ba2:	2303      	movs	r3, #3
  8000ba4:	62fb      	str	r3, [r7, #44]	; 0x2c
-					display[0][5] = display[0][4];
+						display[0][5] = display[0][4];
  8000ba6:	693b      	ldr	r3, [r7, #16]
  8000ba8:	617b      	str	r3, [r7, #20]
-				}
+					}
 
-				/* ====== MOVING MIDDLE PART OF TREE DOWN ====== */
-				for (int i = 4; i > 0; i--) {
+					/* ====== MOVING MIDDLE PART OF TREE DOWN ====== */
+					for (int i = 4; i > 0; i--) {
  8000baa:	2304      	movs	r3, #4
  8000bac:	63fb      	str	r3, [r7, #60]	; 0x3c
  8000bae:	e01e      	b.n	8000bee <game+0x336>
-					display[0][i] = display[0][i - 1]; // move right part of the tree down by 1
+						display[0][i] = display[0][i - 1]; // move right part of the tree down by 1
  8000bb0:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
  8000bb2:	3b01      	subs	r3, #1
  8000bb4:	009b      	lsls	r3, r3, #2
@@ -1454,7 +1464,7 @@ void game() {
  8000bc2:	3350      	adds	r3, #80	; 0x50
  8000bc4:	443b      	add	r3, r7
  8000bc6:	f843 2c50 	str.w	r2, [r3, #-80]
-					display[1][i] = display[1][i - 1]; // move left part of the tree down by 1
+						display[1][i] = display[1][i - 1]; // move left part of the tree down by 1
  8000bca:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
  8000bcc:	3b01      	subs	r3, #1
  8000bce:	3306      	adds	r3, #6
@@ -1468,17 +1478,17 @@ void game() {
  8000be0:	3350      	adds	r3, #80	; 0x50
  8000be2:	443b      	add	r3, r7
  8000be4:	f843 2c50 	str.w	r2, [r3, #-80]
-				for (int i = 4; i > 0; i--) {
+					for (int i = 4; i > 0; i--) {
  8000be8:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
  8000bea:	3b01      	subs	r3, #1
  8000bec:	63fb      	str	r3, [r7, #60]	; 0x3c
  8000bee:	6bfb      	ldr	r3, [r7, #60]	; 0x3c
  8000bf0:	2b00      	cmp	r3, #0
  8000bf2:	dcdd      	bgt.n	8000bb0 <game+0x2f8>
-				}
+					}
 
-				/* ====== GENERATING TOP OF THE TREE ====== */
-				randomNumber = rand() % 100;
+					/* ====== GENERATING TOP OF THE TREE ====== */
+					randomNumber = rand() % 100;
  8000bf4:	f004 fb1a 	bl	800522c <rand>
  8000bf8:	4603      	mov	r3, r0
  8000bfa:	4a39      	ldr	r2, [pc, #228]	; (8000ce0 <game+0x428>)
@@ -1490,29 +1500,29 @@ void game() {
  8000c08:	fb01 f202 	mul.w	r2, r1, r2
  8000c0c:	1a9b      	subs	r3, r3, r2
  8000c0e:	633b      	str	r3, [r7, #48]	; 0x30
-				if (randomNumber % 2 == 0) {
+					if (randomNumber % 2 == 0) {
  8000c10:	6b3b      	ldr	r3, [r7, #48]	; 0x30
  8000c12:	f003 0301 	and.w	r3, r3, #1
  8000c16:	2b00      	cmp	r3, #0
  8000c18:	d104      	bne.n	8000c24 <game+0x36c>
-					display[0][0] = 4; // set right part of tree on height i to branch
+						display[0][0] = 4; // set right part of tree on height i to branch
  8000c1a:	2304      	movs	r3, #4
  8000c1c:	603b      	str	r3, [r7, #0]
-					display[1][0] = 7; // set left part of tree on height i to log
+						display[1][0] = 7; // set left part of tree on height i to log
  8000c1e:	2307      	movs	r3, #7
  8000c20:	61bb      	str	r3, [r7, #24]
  8000c22:	e003      	b.n	8000c2c <game+0x374>
-				} else {
-					display[0][0] = 6; // set right part of tree on height i to log
+					} else {
+						display[0][0] = 6; // set right part of tree on height i to log
  8000c24:	2306      	movs	r3, #6
  8000c26:	603b      	str	r3, [r7, #0]
-					display[1][0] = 5; // set left part of tree on height i to branch
+						display[1][0] = 5; // set left part of tree on height i to branch
  8000c28:	2305      	movs	r3, #5
  8000c2a:	61bb      	str	r3, [r7, #24]
-				}
+					}
 
-				/* ====== DISPLAYING EVERYTHING ====== */
-				HAL_Delay(300);
+					/* ====== DISPLAYING EVERYTHING ====== */
+					HAL_Delay(300);
  8000c2c:	f44f 7096 	mov.w	r0, #300	; 0x12c
  8000c30:	f000 fe84 	bl	800193c <HAL_Delay>
 
@@ -1627,25 +1637,26 @@ void gameOver() {
 	lcd_clear();
  8000cfe:	f7ff fd16 	bl	800072e <lcd_clear>
 
-	sprintf(scoreText, "Score = %d", score);
- 8000d02:	4b53      	ldr	r3, [pc, #332]	; (8000e50 <gameOver+0x158>)
- 8000d04:	681b      	ldr	r3, [r3, #0]
- 8000d06:	461a      	mov	r2, r3
- 8000d08:	4952      	ldr	r1, [pc, #328]	; (8000e54 <gameOver+0x15c>)
- 8000d0a:	4853      	ldr	r0, [pc, #332]	; (8000e58 <gameOver+0x160>)
- 8000d0c:	f004 fb8e 	bl	800542c <siprintf>
 	int startCol = (16 - strlen(scoreText)) / 2 + 1;
- 8000d10:	4851      	ldr	r0, [pc, #324]	; (8000e58 <gameOver+0x160>)
- 8000d12:	f7ff fa5d 	bl	80001d0 <strlen>
- 8000d16:	4603      	mov	r3, r0
- 8000d18:	f1c3 0310 	rsb	r3, r3, #16
- 8000d1c:	085b      	lsrs	r3, r3, #1
- 8000d1e:	3301      	adds	r3, #1
- 8000d20:	603b      	str	r3, [r7, #0]
+ 8000d02:	4853      	ldr	r0, [pc, #332]	; (8000e50 <gameOver+0x158>)
+ 8000d04:	f7ff fa64 	bl	80001d0 <strlen>
+ 8000d08:	4603      	mov	r3, r0
+ 8000d0a:	f1c3 0310 	rsb	r3, r3, #16
+ 8000d0e:	085b      	lsrs	r3, r3, #1
+ 8000d10:	3301      	adds	r3, #1
+ 8000d12:	603b      	str	r3, [r7, #0]
 	bool display = true;
- 8000d22:	2301      	movs	r3, #1
- 8000d24:	71fb      	strb	r3, [r7, #7]
+ 8000d14:	2301      	movs	r3, #1
+ 8000d16:	71fb      	strb	r3, [r7, #7]
 
+	/* ====== INITIAL DISPLAY ====== */
+	sprintf(scoreText, "Score = %d", score);
+ 8000d18:	4b4e      	ldr	r3, [pc, #312]	; (8000e54 <gameOver+0x15c>)
+ 8000d1a:	681b      	ldr	r3, [r3, #0]
+ 8000d1c:	461a      	mov	r2, r3
+ 8000d1e:	494e      	ldr	r1, [pc, #312]	; (8000e58 <gameOver+0x160>)
+ 8000d20:	484b      	ldr	r0, [pc, #300]	; (8000e50 <gameOver+0x158>)
+ 8000d22:	f004 fb83 	bl	800542c <siprintf>
 	if (display) {
  8000d26:	79fb      	ldrb	r3, [r7, #7]
  8000d28:	2b00      	cmp	r3, #0
@@ -1653,7 +1664,7 @@ void gameOver() {
 		lcd_print(1, startCol, scoreText);
  8000d2c:	683b      	ldr	r3, [r7, #0]
  8000d2e:	b2db      	uxtb	r3, r3
- 8000d30:	4a49      	ldr	r2, [pc, #292]	; (8000e58 <gameOver+0x160>)
+ 8000d30:	4a47      	ldr	r2, [pc, #284]	; (8000e50 <gameOver+0x158>)
  8000d32:	4619      	mov	r1, r3
  8000d34:	2001      	movs	r0, #1
  8000d36:	f7ff fce2 	bl	80006fe <lcd_print>
@@ -1678,10 +1689,13 @@ void gameOver() {
 	HAL_Delay(1500);
  8000d5c:	f240 50dc 	movw	r0, #1500	; 0x5dc
  8000d60:	f000 fdec 	bl	800193c <HAL_Delay>
+
 	do {
 		HAL_Delay(50);
  8000d64:	2032      	movs	r0, #50	; 0x32
  8000d66:	f000 fde9 	bl	800193c <HAL_Delay>
+
+		/* ====== CHECKING IF BUTTON WAS PRESSED ====== */
 		HAL_ADC_Start(&hadc1);
  8000d6a:	483e      	ldr	r0, [pc, #248]	; (8000e64 <gameOver+0x16c>)
  8000d6c:	f001 f93e 	bl	8001fec <HAL_ADC_Start>
@@ -1700,6 +1714,7 @@ void gameOver() {
  8000d88:	4b37      	ldr	r3, [pc, #220]	; (8000e68 <gameOver+0x170>)
  8000d8a:	801a      	strh	r2, [r3, #0]
 
+			/* ====== CHECKING IF IT IS TIMER TO CHANGE TEXT ====== */
 			HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BIN);
  8000d8c:	2200      	movs	r2, #0
  8000d8e:	4937      	ldr	r1, [pc, #220]	; (8000e6c <gameOver+0x174>)
@@ -1758,6 +1773,7 @@ void gameOver() {
  8000df0:	f7ff fc9d 	bl	800072e <lcd_clear>
 			}
 
+			/* ====== DISPLAYIN TEXT ====== */
 			if (display) {
  8000df4:	79fb      	ldrb	r3, [r7, #7]
  8000df6:	2b00      	cmp	r3, #0
@@ -1765,7 +1781,7 @@ void gameOver() {
 				lcd_print(1, startCol, scoreText);
  8000dfa:	683b      	ldr	r3, [r7, #0]
  8000dfc:	b2db      	uxtb	r3, r3
- 8000dfe:	4a16      	ldr	r2, [pc, #88]	; (8000e58 <gameOver+0x160>)
+ 8000dfe:	4a14      	ldr	r2, [pc, #80]	; (8000e50 <gameOver+0x158>)
  8000e00:	4619      	mov	r1, r3
  8000e02:	2001      	movs	r0, #1
  8000e04:	f7ff fc7b 	bl	80006fe <lcd_print>
@@ -1794,15 +1810,16 @@ void gameOver() {
  8000e2e:	f5b3 6f7a 	cmp.w	r3, #4000	; 0xfa0
  8000e32:	d897      	bhi.n	8000d64 <gameOver+0x6c>
 
+	/* ====== UPDATE HIGHSCORE IF NEEDED ====== */
 	if (highScore < score)
  8000e34:	4b11      	ldr	r3, [pc, #68]	; (8000e7c <gameOver+0x184>)
  8000e36:	681a      	ldr	r2, [r3, #0]
- 8000e38:	4b05      	ldr	r3, [pc, #20]	; (8000e50 <gameOver+0x158>)
+ 8000e38:	4b06      	ldr	r3, [pc, #24]	; (8000e54 <gameOver+0x15c>)
  8000e3a:	681b      	ldr	r3, [r3, #0]
  8000e3c:	429a      	cmp	r2, r3
  8000e3e:	da03      	bge.n	8000e48 <gameOver+0x150>
 		highScore = score;
- 8000e40:	4b03      	ldr	r3, [pc, #12]	; (8000e50 <gameOver+0x158>)
+ 8000e40:	4b04      	ldr	r3, [pc, #16]	; (8000e54 <gameOver+0x15c>)
  8000e42:	681b      	ldr	r3, [r3, #0]
  8000e44:	4a0d      	ldr	r2, [pc, #52]	; (8000e7c <gameOver+0x184>)
  8000e46:	6013      	str	r3, [r2, #0]
@@ -1811,9 +1828,9 @@ void gameOver() {
  8000e4a:	3708      	adds	r7, #8
  8000e4c:	46bd      	mov	sp, r7
  8000e4e:	bdb0      	pop	{r4, r5, r7, pc}
- 8000e50:	20000118 	.word	0x20000118
- 8000e54:	080065f8 	.word	0x080065f8
- 8000e58:	20000120 	.word	0x20000120
+ 8000e50:	20000120 	.word	0x20000120
+ 8000e54:	20000118 	.word	0x20000118
+ 8000e58:	080065f8 	.word	0x080065f8
  8000e5c:	08006604 	.word	0x08006604
  8000e60:	08006614 	.word	0x08006614
  8000e64:	2000008c 	.word	0x2000008c
@@ -1921,18 +1938,16 @@ int main(void) {
 	lcd_cmd(0x40);
  8000f18:	2040      	movs	r0, #64	; 0x40
  8000f1a:	f7ff f9df 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(rightManHit[i]);
  8000f1e:	2300      	movs	r3, #0
  8000f20:	65fb      	str	r3, [r7, #92]	; 0x5c
  8000f22:	e00a      	b.n	8000f3a <main+0xba>
-		lcd_char_cp(rightManHit[i]);
  8000f24:	f107 0238 	add.w	r2, r7, #56	; 0x38
  8000f28:	6dfb      	ldr	r3, [r7, #92]	; 0x5c
  8000f2a:	4413      	add	r3, r2
  8000f2c:	781b      	ldrb	r3, [r3, #0]
  8000f2e:	4618      	mov	r0, r3
  8000f30:	f7ff faa0 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000f34:	6dfb      	ldr	r3, [r7, #92]	; 0x5c
  8000f36:	3301      	adds	r3, #1
  8000f38:	65fb      	str	r3, [r7, #92]	; 0x5c
@@ -1942,18 +1957,16 @@ int main(void) {
 	lcd_cmd(0x40 + 8);
  8000f40:	2048      	movs	r0, #72	; 0x48
  8000f42:	f7ff f9cb 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(leftManHit[i]);
  8000f46:	2300      	movs	r3, #0
  8000f48:	65bb      	str	r3, [r7, #88]	; 0x58
  8000f4a:	e00a      	b.n	8000f62 <main+0xe2>
-		lcd_char_cp(leftManHit[i]);
  8000f4c:	f107 0230 	add.w	r2, r7, #48	; 0x30
  8000f50:	6dbb      	ldr	r3, [r7, #88]	; 0x58
  8000f52:	4413      	add	r3, r2
  8000f54:	781b      	ldrb	r3, [r3, #0]
  8000f56:	4618      	mov	r0, r3
  8000f58:	f7ff fa8c 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000f5c:	6dbb      	ldr	r3, [r7, #88]	; 0x58
  8000f5e:	3301      	adds	r3, #1
  8000f60:	65bb      	str	r3, [r7, #88]	; 0x58
@@ -1963,18 +1976,16 @@ int main(void) {
 	lcd_cmd(0x40 + 16);
  8000f68:	2050      	movs	r0, #80	; 0x50
  8000f6a:	f7ff f9b7 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(rightMan[i]);
  8000f6e:	2300      	movs	r3, #0
  8000f70:	657b      	str	r3, [r7, #84]	; 0x54
  8000f72:	e00a      	b.n	8000f8a <main+0x10a>
-		lcd_char_cp(rightMan[i]);
  8000f74:	f107 0228 	add.w	r2, r7, #40	; 0x28
  8000f78:	6d7b      	ldr	r3, [r7, #84]	; 0x54
  8000f7a:	4413      	add	r3, r2
  8000f7c:	781b      	ldrb	r3, [r3, #0]
  8000f7e:	4618      	mov	r0, r3
  8000f80:	f7ff fa78 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000f84:	6d7b      	ldr	r3, [r7, #84]	; 0x54
  8000f86:	3301      	adds	r3, #1
  8000f88:	657b      	str	r3, [r7, #84]	; 0x54
@@ -1984,18 +1995,16 @@ int main(void) {
 	lcd_cmd(0x40 + 24);
  8000f90:	2058      	movs	r0, #88	; 0x58
  8000f92:	f7ff f9a3 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(leftMan[i]);
  8000f96:	2300      	movs	r3, #0
  8000f98:	653b      	str	r3, [r7, #80]	; 0x50
  8000f9a:	e00a      	b.n	8000fb2 <main+0x132>
-		lcd_char_cp(leftMan[i]);
  8000f9c:	f107 0220 	add.w	r2, r7, #32
  8000fa0:	6d3b      	ldr	r3, [r7, #80]	; 0x50
  8000fa2:	4413      	add	r3, r2
  8000fa4:	781b      	ldrb	r3, [r3, #0]
  8000fa6:	4618      	mov	r0, r3
  8000fa8:	f7ff fa64 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000fac:	6d3b      	ldr	r3, [r7, #80]	; 0x50
  8000fae:	3301      	adds	r3, #1
  8000fb0:	653b      	str	r3, [r7, #80]	; 0x50
@@ -2005,18 +2014,16 @@ int main(void) {
 	lcd_cmd(0x40 + 32);
  8000fb8:	2060      	movs	r0, #96	; 0x60
  8000fba:	f7ff f98f 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(branchRight[i]);
  8000fbe:	2300      	movs	r3, #0
  8000fc0:	64fb      	str	r3, [r7, #76]	; 0x4c
  8000fc2:	e00a      	b.n	8000fda <main+0x15a>
-		lcd_char_cp(branchRight[i]);
  8000fc4:	f107 0218 	add.w	r2, r7, #24
  8000fc8:	6cfb      	ldr	r3, [r7, #76]	; 0x4c
  8000fca:	4413      	add	r3, r2
  8000fcc:	781b      	ldrb	r3, [r3, #0]
  8000fce:	4618      	mov	r0, r3
  8000fd0:	f7ff fa50 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000fd4:	6cfb      	ldr	r3, [r7, #76]	; 0x4c
  8000fd6:	3301      	adds	r3, #1
  8000fd8:	64fb      	str	r3, [r7, #76]	; 0x4c
@@ -2026,18 +2033,16 @@ int main(void) {
 	lcd_cmd(0x40 + 40);
  8000fe0:	2068      	movs	r0, #104	; 0x68
  8000fe2:	f7ff f97b 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(branchLeft[i]);
  8000fe6:	2300      	movs	r3, #0
  8000fe8:	64bb      	str	r3, [r7, #72]	; 0x48
  8000fea:	e00a      	b.n	8001002 <main+0x182>
-		lcd_char_cp(branchLeft[i]);
  8000fec:	f107 0210 	add.w	r2, r7, #16
  8000ff0:	6cbb      	ldr	r3, [r7, #72]	; 0x48
  8000ff2:	4413      	add	r3, r2
  8000ff4:	781b      	ldrb	r3, [r3, #0]
  8000ff6:	4618      	mov	r0, r3
  8000ff8:	f7ff fa3c 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8000ffc:	6cbb      	ldr	r3, [r7, #72]	; 0x48
  8000ffe:	3301      	adds	r3, #1
  8001000:	64bb      	str	r3, [r7, #72]	; 0x48
@@ -2047,18 +2052,16 @@ int main(void) {
 	lcd_cmd(0x40 + 48);
  8001008:	2070      	movs	r0, #112	; 0x70
  800100a:	f7ff f967 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(logRight[i]);
  800100e:	2300      	movs	r3, #0
  8001010:	647b      	str	r3, [r7, #68]	; 0x44
  8001012:	e00a      	b.n	800102a <main+0x1aa>
-		lcd_char_cp(logRight[i]);
  8001014:	f107 0208 	add.w	r2, r7, #8
  8001018:	6c7b      	ldr	r3, [r7, #68]	; 0x44
  800101a:	4413      	add	r3, r2
  800101c:	781b      	ldrb	r3, [r3, #0]
  800101e:	4618      	mov	r0, r3
  8001020:	f7ff fa28 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  8001024:	6c7b      	ldr	r3, [r7, #68]	; 0x44
  8001026:	3301      	adds	r3, #1
  8001028:	647b      	str	r3, [r7, #68]	; 0x44
@@ -2068,29 +2071,26 @@ int main(void) {
 	lcd_cmd(0x40 + 56);
  8001030:	2078      	movs	r0, #120	; 0x78
  8001032:	f7ff f953 	bl	80002dc <lcd_cmd>
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 8; i++) lcd_char_cp(logLeft[i]);
  8001036:	2300      	movs	r3, #0
  8001038:	643b      	str	r3, [r7, #64]	; 0x40
  800103a:	e009      	b.n	8001050 <main+0x1d0>
-		lcd_char_cp(logLeft[i]);
  800103c:	463a      	mov	r2, r7
  800103e:	6c3b      	ldr	r3, [r7, #64]	; 0x40
  8001040:	4413      	add	r3, r2
  8001042:	781b      	ldrb	r3, [r3, #0]
  8001044:	4618      	mov	r0, r3
  8001046:	f7ff fa15 	bl	8000474 <lcd_char_cp>
-	for (int i = 0; i < 8; i++)
  800104a:	6c3b      	ldr	r3, [r7, #64]	; 0x40
  800104c:	3301      	adds	r3, #1
  800104e:	643b      	str	r3, [r7, #64]	; 0x40
  8001050:	6c3b      	ldr	r3, [r7, #64]	; 0x40
  8001052:	2b07      	cmp	r3, #7
  8001054:	ddf2      	ble.n	800103c <main+0x1bc>
-
 	lcd_cmd(0x80);
  8001056:	2080      	movs	r0, #128	; 0x80
  8001058:	f7ff f940 	bl	80002dc <lcd_cmd>
-	/* USER CODE BEGIN WHILE */
+	//lcd_print(2, 1, "Test line 2");
 	while (1) {
 		/* USER CODE END WHILE */
 
